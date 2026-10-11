@@ -6,7 +6,45 @@
 <title>Impressum · Kris Limbach Studios</title>
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="fonts.css">
-<link rel="stylesheet" href="legal.css">
+<style>
+:root {
+  --bg: #0F0E11; --bg-deep: #0A090C; --line: #2C2830;
+  --ink: #F1ECEF; --ink-soft: #D9D1D6; --ink-mute: #B9AFB6; --ink-faint: #8E848B;
+  --pink: #EE5FAE; --pink-bar: #C8338A;
+  --display: 'Jost', 'Futura', 'Helvetica Neue', sans-serif;
+  --body: 'Spectral', Georgia, serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.65; }
+a { color: var(--pink); }
+a:hover { color: #F2BFA4; }
+:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
+.wrap { max-width: 1400px; margin: 0 auto; padding-inline: 24px; }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--pink-bar); }
+.bar nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; padding-block: 18px; }
+.brand { font-family: var(--display); color: #fff; text-decoration: none; font-size: 15px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+.brand:hover { color: #fff; }
+.back { font-family: var(--display); color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.back:hover { color: #fff; text-decoration: underline; text-underline-offset: 5px; }
+main.wrap { padding-block: 56px 96px; }
+.legal { max-width: 760px; }
+.legal h1 { margin: 0 0 32px; font-family: var(--display); font-weight: 500; font-size: clamp(30px, 5vw, 44px); line-height: 1.1; }
+.legal h2 { margin: 40px 0 10px; font-family: var(--display); font-weight: 500; font-size: 22px; }
+.legal h3 { margin: 24px 0 6px; font-family: var(--display); font-weight: 500; font-size: 18px; }
+.legal p, .legal li { color: var(--ink-soft); font-weight: 300; }
+.legal p { margin: 0 0 12px; }
+.legal ul { margin: 0 0 12px; padding-left: 20px; }
+.todo { background: rgba(238,95,174,.18); color: var(--ink); padding: 0 4px; border-radius: 3px; font-weight: 400; }
+.stand { margin-top: 40px; font-family: var(--display); font-size: 13px; color: var(--ink-faint); }
+footer { background: var(--bg-deep); border-top: 1px solid var(--line); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 6px 18px; padding-block: 28px; font-family: var(--display); font-size: 13px; color: var(--ink-faint); }
+@media (max-width: 600px) {
+  .bar nav { padding-block: 12px; }
+  .brand { font-size: 13px; letter-spacing: .14em; }
+  .back { font-size: 11px; }
+}
+</style>
 </head>
 <body>
 <header class="bar">
@@ -21,7 +59,7 @@
     <h1>Impressum</h1>
 
     <h2>Angaben gemäß § 5 DDG</h2>
-    <p>Kris Limbach <span class="todo">[vollständiger Name prüfen]</span><br>
+    <p>Kris Limbach<br>
     Kris Limbach Studios<br>
     Kiefholzstr. 19, Gewerbehof 2<br>
     12453 Berlin<br>
@@ -32,8 +70,7 @@
     E-Mail: <a href="mailto:krislimbach@posteo.org">krislimbach@posteo.org</a></p>
 
     <h2>Umsatzsteuer</h2>
-    <p><span class="todo">[Falls vorhanden:]</span> Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: <span class="todo">DE…</span><br>
-    <span class="todo">[Falls Kleinunternehmer ohne USt-IdNr.: diesen Abschnitt löschen.]</span></p>
+    <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: DE243895279</p>
 
     <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
     <p>Kris Limbach, Anschrift wie oben</p>

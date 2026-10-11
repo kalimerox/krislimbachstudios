@@ -6,7 +6,45 @@
 <title>Datenschutz · Kris Limbach Studios</title>
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="fonts.css">
-<link rel="stylesheet" href="legal.css">
+<style>
+:root {
+  --bg: #0F0E11; --bg-deep: #0A090C; --line: #2C2830;
+  --ink: #F1ECEF; --ink-soft: #D9D1D6; --ink-mute: #B9AFB6; --ink-faint: #8E848B;
+  --pink: #EE5FAE; --pink-bar: #C8338A;
+  --display: 'Jost', 'Futura', 'Helvetica Neue', sans-serif;
+  --body: 'Spectral', Georgia, serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.65; }
+a { color: var(--pink); }
+a:hover { color: #F2BFA4; }
+:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
+.wrap { max-width: 1400px; margin: 0 auto; padding-inline: 24px; }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--pink-bar); }
+.bar nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; padding-block: 18px; }
+.brand { font-family: var(--display); color: #fff; text-decoration: none; font-size: 15px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+.brand:hover { color: #fff; }
+.back { font-family: var(--display); color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.back:hover { color: #fff; text-decoration: underline; text-underline-offset: 5px; }
+main.wrap { padding-block: 56px 96px; }
+.legal { max-width: 760px; }
+.legal h1 { margin: 0 0 32px; font-family: var(--display); font-weight: 500; font-size: clamp(30px, 5vw, 44px); line-height: 1.1; }
+.legal h2 { margin: 40px 0 10px; font-family: var(--display); font-weight: 500; font-size: 22px; }
+.legal h3 { margin: 24px 0 6px; font-family: var(--display); font-weight: 500; font-size: 18px; }
+.legal p, .legal li { color: var(--ink-soft); font-weight: 300; }
+.legal p { margin: 0 0 12px; }
+.legal ul { margin: 0 0 12px; padding-left: 20px; }
+.todo { background: rgba(238,95,174,.18); color: var(--ink); padding: 0 4px; border-radius: 3px; font-weight: 400; }
+.stand { margin-top: 40px; font-family: var(--display); font-size: 13px; color: var(--ink-faint); }
+footer { background: var(--bg-deep); border-top: 1px solid var(--line); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 6px 18px; padding-block: 28px; font-family: var(--display); font-size: 13px; color: var(--ink-faint); }
+@media (max-width: 600px) {
+  .bar nav { padding-block: 12px; }
+  .brand { font-size: 13px; letter-spacing: .14em; }
+  .back { font-size: 11px; }
+}
+</style>
 </head>
 <body>
 <header class="bar">
@@ -22,7 +60,7 @@
 
     <h2>1. Verantwortlicher</h2>
     <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br>
-    Kris Limbach <span class="todo">[vollständiger Name prüfen]</span><br>
+    Kris Limbach<br>
     Kiefholzstr. 19, Gewerbehof 2, 12453 Berlin, Deutschland<br>
     E-Mail: <a href="mailto:krislimbach@posteo.org">krislimbach@posteo.org</a><br>
     Telefon: +49 176 1051 7986</p>
@@ -37,7 +75,7 @@
     <p>Auf dieser Website sind Videos und Audioplayer anderer Anbieter eingebunden. Beim Laden dieser Inhalte wird eine Verbindung zu den Servern des jeweiligen Anbieters hergestellt und dabei mindestens Ihre IP-Adresse übermittelt. Die Anbieter können außerdem Cookies setzen und Nutzungsdaten erheben. Wir haben darauf keinen Einfluss. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO; unser berechtigtes Interesse liegt in einer ansprechenden Präsentation unserer Arbeiten.</p>
 
     <h3>YouTube</h3>
-    <p>Anbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Wir nutzen den erweiterten Datenschutzmodus (youtube-nocookie.com). Ein Video wird erst geladen, wenn Sie es anklicken. Die Vorschaubilder werden von Servern von Google geladen <span class="todo">[entfällt, falls die Vorschaubilder lokal gespeichert werden]</span>. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+    <p>Anbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Wir nutzen den erweiterten Datenschutzmodus (youtube-nocookie.com). Die Vorschaubilder sind auf unserem eigenen Server gespeichert; eine Verbindung zu YouTube wird erst hergestellt, wenn Sie ein Video anklicken. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
 
     <h3>Vimeo</h3>
     <p>Anbieter: Vimeo.com, Inc. (USA). Ein Video wird erst geladen, wenn Sie es anklicken; die Wiedergabe erfolgt mit aktiviertem „Do Not Track“. Weitere Informationen: <a href="https://vimeo.com/privacy" target="_blank" rel="noopener">vimeo.com/privacy</a>.</p>
