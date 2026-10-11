@@ -279,7 +279,7 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
             <li>Mastering &amp; technical delivery</li>
           </ul>
         </div>
-        <div class="contact"><strong>Kris Limbach</strong><br>mail: <a href="mailto:krislimbach@posteo.org">krislimbach@posteo.org</a><br>tel: <a href="tel:+4917610517986">+49 176 1051 7986</a></div>
+        <div class="contact"><strong>Kris Limbach</strong><br>mail: <a href="mailto:krislimbach@posteo.org">krislimbach@posteo.org</a></div>
         <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Kiefholzstr.+19,+12453+Berlin" target="_blank" rel="noopener"><img src="img/map.jpg" alt="Map: Kiefholzstraße 19, Berlin Treptow"></a>
         <div class="contact">Kiefholzstr. 19, Gewerbehof 2<br>12453 Berlin (Treptow), Germany</div>
       </aside>
@@ -289,7 +289,7 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
 
 <footer>
   <div class="wrap">
-    <div><span style="color: var(--ink)">Kris Limbach</span><br>mail: <a href="mailto:krislimbach@posteo.org">krislimbach@posteo.org</a><br>tel: <a href="tel:+4917610517986">+49 176 1051 7986</a></div>
+    <div><span style="color: var(--ink)">Kris Limbach</span><br>mail: <a href="mailto:krislimbach@posteo.org">krislimbach@posteo.org</a></div>
     <div>Kiefholzstr. 19, Gewerbehof 2<br>12453 Berlin (Treptow), Germany</div>
     <div style="display: flex; flex-direction: column; gap: 8px">
       <div class="row"><a href="https://krislimbach.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a><a href="https://vimeo.com/emitter19" target="_blank" rel="noopener">Vimeo</a><a href="https://krislimbach.com" target="_blank" rel="noopener">krislimbach.com</a></div>
@@ -307,12 +307,13 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
                vimeo.com/123456 -> '123456'
                private Vimeo vimeo.com/123456/abcdef -> '123456?h=abcdef'
      leave id '' if the link is still missing
-     thumbnail: YouTube videos use their official thumbnail automatically;
+     thumbnail: YouTube videos use img/yt-VIDEOID.jpg automatically
+                (save the video's thumbnail there with that name);
                 the image here is only used for Vimeo or videos without a link
    ============================================================ */
 var WORK = [
   ['Liebe, D-Mark und Tod (Trailer, 2022)', 'Film', 'youtube', '_9QXAfulvnI', 'img/w04.jpg'],
-  ['IKEA, Weil es manchmal eben sofort sein muss', 'Commercial', 'vimeo', '294532169', 'https://i.vimeocdn.com/video/731452993-a23b45181f9f0c2ac9f83ff38041e31ab347e0dc0f1a83fe42a4d0ca4d493a9f-d_1280'],
+  ['IKEA, Weil es manchmal eben sofort sein muss', 'Commercial', 'vimeo', '294532169', 'img/vimeo-294532169.jpg'],
   ['Zalando, International Transgender Day of Visibility 2024', 'Campaign', 'youtube', 'NwmCVZtcyOo', 'img/w06.jpg'],
   ['FC Internat, Fußball ist unser Leben (KiKA/hr)', 'TV Series', 'youtube', 'yc-BrUa_Ll4', 'img/w07.jpg'],
   ['Alice Phoebe Lou, Drive By (Live Acoustic Session)', 'Music', 'youtube', '0Gy9hPE81MU', 'img/w08.jpg'],
@@ -322,7 +323,7 @@ var WORK = [
   ['5 Minutes On… Debussy, Daniel Barenboim', 'Music', 'youtube', 'XiWfPJLp2ko', 'img/w12.jpg'],
   ['Tim Bendzko, #TIMTRIFFT Peter Maffay', 'Music', 'youtube', '0VyNWE4mE44', 'img/w13.jpg'],
   ['OXFAM, Make Fruit Fair (Kinowerbung)', 'Campaign', 'youtube', 'cN6xJqxwQk4', 'img/w14.jpg'],
-  ['Zalando, Why I Run: One Berlin Marathon, three stories', 'Commercial', 'youtube', 'IWIyxXMprsQ', 'https://i.ytimg.com/vi/IWIyxXMprsQ/hqdefault.jpg'],
+  ['Zalando, Why I Run: One Berlin Marathon, three stories', 'Commercial', 'youtube', 'IWIyxXMprsQ', ''],
   ['Zalando, The Ordinary: Welcome to the class of ’25', 'Commercial', 'vimeo', '', 'img/w01.jpg'],
   ['Eytys, 6 new looks for 2025, Zalando', 'Commercial', 'vimeo', '', 'img/w02.jpg'],
   ['7:1, Das Jahrhundertspiel (ZDF)', 'Sport', 'vimeo', '', 'img/w03.jpg']
@@ -420,10 +421,7 @@ function openVideo(i) {
 
 function thumbFor(w) {
   var isYT = w[2] === 'youtube' && w[3];
-  var im = el('img', { src: isYT ? 'https://i.ytimg.com/vi/' + w[3] + '/maxresdefault.jpg' : w[4], alt: '', loading: 'lazy' });
-  if (isYT) im.addEventListener('load', function () {
-    if (im.naturalWidth <= 120) im.src = 'https://i.ytimg.com/vi/' + w[3] + '/hqdefault.jpg';
-  });
+  var im = el('img', { src: isYT ? 'img/yt-' + w[3] + '.jpg' : w[4], alt: '', loading: 'lazy' });
   return im;
 }
 
