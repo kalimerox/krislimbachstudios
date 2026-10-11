@@ -57,11 +57,15 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; 
 .tile.small { flex: 1 1 260px; }
 .tile img, .tile video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
 .tile:hover img, .tile:hover video { transform: scale(1.04); }
-.tile .name { position: absolute; left: 0; right: 0; bottom: 0; padding: 72px 28px 24px; background: linear-gradient(transparent, rgba(15,14,17,.85)); font-family: var(--display); font-size: 34px; font-weight: 600; line-height: 1.05; transition: color .25s ease; }
-.tile.small .name { text-align: right; }
-.tile:hover .name { color: var(--pink); }
-.tile .hint { position: absolute; top: 20px; left: 20px; right: 20px; max-width: 360px; padding: 14px 16px; border-radius: 5px; background: rgba(15,14,17,.82); font-size: 17px; line-height: 1.45; color: var(--ink); opacity: 0; transition: opacity .25s ease; }
-.tile:hover .hint, .tile:focus-visible .hint { opacity: 1; }
+.tile .shade { position: absolute; inset: 0; background: rgba(15,14,17,.55); opacity: 0; transition: opacity .3s ease; }
+.tile:hover .shade, .tile:focus-visible .shade { opacity: 1; }
+.tile .tlabel { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; padding: 72px 28px 24px; background: linear-gradient(transparent, rgba(15,14,17,.85)); }
+.tile.small .tlabel { align-items: flex-end; text-align: right; }
+.tile .name { font-family: var(--display); font-size: 34px; font-weight: 600; line-height: 1.05; transition: color .25s ease; }
+.tile:hover .name, .tile:focus-visible .name { color: var(--pink); }
+.tile .hint { max-width: 380px; max-height: 0; margin-top: 0; overflow: hidden; opacity: 0; font-family: var(--display); font-size: 16px; line-height: 1.5; color: var(--ink); transition: opacity .3s ease, max-height .3s ease, margin-top .3s ease; }
+.tile:hover .hint, .tile:focus-visible .hint { opacity: 1; max-height: 140px; margin-top: 12px; }
+@media (hover: none) { .tile .hint { opacity: 1; max-height: 140px; margin-top: 12px; } }
 @media (max-width: 600px) { .tile { height: 320px; } .tile .name { font-size: 28px; } }
 
 .intro { padding-block: 56px 24px; }
@@ -74,7 +78,11 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; 
 .studio p { margin: 0; font-size: 21px; color: var(--ink-soft); font-weight: 300; }
 
 .services { padding-block: 8px 72px; }
-.services ul { margin: 0; padding: 24px 0 0; border-top: 1px solid var(--line); list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 6px 32px; font-family: var(--display); font-size: 22px; line-height: 1.55; }
+.svc { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px 32px; padding-top: 8px; }
+@media (max-width: 800px) { .svc { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.svc h4 { margin: 0 0 12px; font-family: var(--display); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--pink); font-weight: 600; }
+.svc ul { margin: 0; padding: 0; list-style: none; font-family: var(--display); font-size: 22px; line-height: 1.55; }
+@media (max-width: 600px) { .svc ul { font-size: 18px; } }
 
 /* Work */
 .block { padding-block: 24px 80px; }
@@ -89,7 +97,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; 
 .ghost { min-height: 44px; padding: 0 22px; border-radius: 999px; border: 1px solid var(--pink); background: transparent; color: var(--pink); font-family: var(--display); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; cursor: pointer; }
 .ghost:hover { background: var(--pink); color: var(--bg); }
 
-.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 32px; }
 @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
 .thumb { position: relative; display: block; aspect-ratio: 16 / 9; max-width: 100%; overflow: hidden; border-radius: 5px; border: 0; padding: 0; background: var(--panel); cursor: pointer; font: inherit; color: var(--ink); text-align: left; }
@@ -107,7 +115,11 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; 
 .art-intro h3 { margin: 0 0 10px; font-size: 32px; }
 .art-intro p { margin: 0; font-size: 19px; color: var(--ink-soft); font-weight: 300; }
 .releases { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px 16px; margin-bottom: 44px; }
-.releases iframe { width: 100%; height: 470px; border: 0; border-radius: 5px; background: var(--panel); }
+.releases { justify-items: start; }
+.releases iframe { width: 100%; max-width: 350px; height: 470px; border: 0; border-radius: 5px; background: var(--panel); }
+.poster { position: absolute; inset: 0; border: 0; padding: 0; background: none; cursor: pointer; }
+.poster img { width: 100%; height: 100%; object-fit: cover; }
+.disco-title { font-size: 22px; letter-spacing: .12em; color: var(--ink); margin-bottom: 18px; }
 .disco { margin: 0 0 16px; padding: 0; list-style: none; border-top: 1px solid var(--line); }
 .disco li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 24px; padding-block: 12px; border-bottom: 1px solid var(--line); }
 .disco b { font-family: var(--display); font-size: 16px; font-weight: 500; }
@@ -120,7 +132,6 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; 
 .about-main h4 { margin: 0 0 16px; font-family: var(--display); font-size: 22px; font-weight: 500; }
 .about-main p { margin: 0 0 12px; font-size: 18px; color: var(--ink-soft); font-weight: 300; }
 .steps { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }
-.steps li { border-top: 1px solid var(--pink); padding-top: 14px; }
 .steps b { display: block; margin-bottom: 8px; font-family: var(--display); font-size: 16px; font-weight: 500; }
 .steps b em { font-style: normal; color: var(--pink); margin-right: 6px; }
 .steps span { font-size: 16px; color: var(--ink-mute); }
@@ -129,7 +140,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; 
 .portrait { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 5px; filter: grayscale(1); }
 .network { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 26px; }
 .network h4 { margin: 0 0 14px; font-family: var(--display); font-size: 22px; font-weight: 500; }
-.network ul { margin: 0 0 24px; padding-left: 20px; font-size: 16px; line-height: 1.8; color: var(--ink-soft); }
+.network ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.8; color: var(--ink-soft); }
 .pill { display: inline-flex; align-items: center; min-height: 44px; padding: 0 24px; border-radius: 999px; background: var(--pink); color: var(--bg); text-decoration: none; font-family: var(--display); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
 .pill:hover { background: var(--peach); color: var(--bg); }
 .contact { font-family: var(--display); font-size: 14px; line-height: 1.7; color: var(--ink-mute); }
@@ -161,14 +172,14 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
 
   <section class="tiles" aria-label="Areas">
     <a href="#studio" class="tile big">
-      <img src="img/hero-studio.jpg" alt="Field recorder on a cutting mat" style="object-position: 40% 60%">
-      <span class="hint">Sound services and coordination: field recording, foley, dialogue, spatial audio and full post-production, with one point of contact.</span>
-      <span class="name">Studio<br>Agency</span>
+      <img src="img/hero-studio.jpg" alt="Field recorder on a cutting mat" style="object-position: 50% 35%">
+      <span class="shade"></span>
+      <span class="tlabel"><span class="name">Studio<br>Agency</span><span class="hint">Field recording, foley, dialogue, spatial audio and full post-production, with one point of contact.</span></span>
     </a>
     <a href="#soundart" class="tile small">
       <img src="img/hero-art.jpg" alt="Two microphones in shock mounts on small stands" style="object-position: 45% 50%">
-      <span class="hint">Sound pieces exploring spatial perception, materiality and environmental recording.</span>
-      <span class="name">Sound<br>Art</span>
+      <span class="shade"></span>
+      <span class="tlabel"><span class="name">Sound<br>Art</span><span class="hint">Sound pieces exploring spatial perception, materiality and environmental recording.</span></span>
     </a>
   </section>
 
@@ -186,16 +197,12 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
 
   <section class="services" aria-labelledby="services-h">
     <h3 id="services-h" class="sub">Services</h3>
-    <ul>
-      <li>Set recording</li>
-      <li>Sound design</li>
-      <li>Audio post-production</li>
-      <li>Dolby 5.1 mixing</li>
-      <li>Vinyl &amp; music mastering</li>
-      <li>Ambisonics recording</li>
-      <li>Scoring &amp; composition</li>
-      <li>Sound supervision</li>
-    </ul>
+    <div class="svc">
+      <div><h4>Recording</h4><ul><li>Set recording</li><li>Ambisonics recording</li></ul></div>
+      <div><h4>Post</h4><ul><li>Sound design</li><li>Audio post-production</li><li>Dolby 5.1 mixing</li></ul></div>
+      <div><h4>Music</h4><ul><li>Scoring &amp; composition</li><li>Vinyl &amp; music mastering</li></ul></div>
+      <div><h4>Supervision</h4><ul><li>Sound supervision</li></ul></div>
+    </div>
   </section>
 
   <section class="block" aria-labelledby="work-h">
@@ -221,7 +228,7 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
     </div>
     <h3 class="sub">Releases</h3>
     <div class="releases" id="releases"></div>
-    <h3 class="sub">Discography</h3>
+    <h3 class="sub disco-title">Discography</h3>
     <ul class="disco" id="disco"></ul>
     <button type="button" class="ghost" id="disco-toggle"></button>
   </section>
@@ -267,7 +274,6 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
             <li>Sound design &amp; synthesis</li>
             <li>Mastering &amp; technical delivery</li>
           </ul>
-          <a class="pill" href="mailto:krislimbach@posteo.org">Discuss your project</a>
         </div>
         <div class="contact"><strong>Kris Limbach</strong><br>mail: <a href="mailto:krislimbach@posteo.org">krislimbach@posteo.org</a><br>tel: <a href="tel:+4917610517986">+49 176 1051 7986</a></div>
         <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Kiefholzstr.+19,+12453+Berlin" target="_blank" rel="noopener"><img src="img/map.jpg" alt="Map: Kiefholzstraße 19, Berlin Treptow"></a>
@@ -320,7 +326,8 @@ var WORK = [
 var REEL = {
   title: 'Showreel',
   tag: 'Kris Limbach Studios',
-  src: 'https://iframe.mediadelivery.net/embed/722601/908dd182-cf38-4b52-88b5-ced59085a82d?autoplay=false&preload=true'
+  src: 'https://iframe.mediadelivery.net/embed/722601/908dd182-cf38-4b52-88b5-ced59085a82d?autoplay=true',
+  poster: 'img/reel-poster.jpg'
 };
 
 /* RELEASES (Bandcamp players): [title, album id, album link] */
@@ -418,7 +425,12 @@ WORK.forEach(function (w, i) {
 var closeBtn = document.getElementById('p-close');
 function showReel() {
   screen.innerHTML = '';
-  screen.appendChild(el('iframe', { src: REEL.src, title: REEL.title, allow: 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen', allowfullscreen: '' }));
+  var poster = el('button', { type: 'button', class: 'poster', 'aria-label': 'Play showreel' }, [el('img', { src: REEL.poster, alt: '' })]);
+  poster.addEventListener('click', function () {
+    screen.innerHTML = '';
+    screen.appendChild(el('iframe', { src: REEL.src, title: REEL.title, allow: 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen', allowfullscreen: '' }));
+  });
+  screen.appendChild(poster);
   document.getElementById('p-title').textContent = REEL.title;
   document.getElementById('p-tag').textContent = REEL.tag;
   closeBtn.hidden = true;
@@ -430,7 +442,7 @@ showReel();
 
 var rel = document.getElementById('releases');
 RELEASES.forEach(function (r) {
-  var src = 'https://bandcamp.com/EmbeddedPlayer/album=' + r[1] + '/size=large/bgcol=1a181d/linkcol=ee5fae/tracklist=false/transparent=true/';
+  var src = 'https://bandcamp.com/EmbeddedPlayer/album=' + r[1] + '/size=large/bgcol=1a181d/linkcol=ee5fae/tracklist=false/';
   var f = el('iframe', { src: src, title: r[0], loading: 'lazy', seamless: '' });
   rel.appendChild(f);
 });
