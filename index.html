@@ -46,6 +46,13 @@ a:hover { color: var(--peach); }
 .links a:hover { color: #fff; text-decoration: underline; }
 
 section[id] { scroll-margin-top: 80px; }
+@media (max-width: 600px) {
+  .bar nav { gap: 6px 16px; padding-block: 10px; }
+  .brand { font-size: 13px; letter-spacing: .14em; width: 100%; }
+  .links { gap: 6px 18px; flex-wrap: nowrap; }
+  .links a { font-size: 11px; letter-spacing: .12em; white-space: nowrap; }
+  section[id] { scroll-margin-top: 70px; }
+}
 .label { margin: 0 0 24px; padding-bottom: 12px; border-bottom: 1px solid var(--line); font-family: var(--display); font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--pink); font-weight: 600; }
 .sub { margin: 0 0 14px; font-family: var(--display); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-mute); font-weight: 600; }
 h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; }
@@ -110,9 +117,9 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; 
 @media (hover: none) { .thumb .cap { opacity: 1; } }
 
 /* Sound art */
-.art-intro { max-width: 760px; margin-bottom: 36px; }
+.art-intro { margin-bottom: 36px; }
 .art-intro h3 { margin: 0 0 10px; font-size: 32px; }
-.art-intro p { margin: 0; font-size: 19px; color: var(--ink-soft); font-weight: 300; }
+.art-intro p { margin: 0; font-size: clamp(18px, 1.9vw, 25px); color: var(--ink-soft); font-weight: 300; }
 .releases { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px 16px; margin-bottom: 44px; }
 .releases { justify-items: start; }
 .releases iframe { width: 100%; max-width: 350px; height: 470px; border: 0; border-radius: 5px; background: var(--panel); }
