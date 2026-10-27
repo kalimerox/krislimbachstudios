@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kris Limbach Studios</title>
-<meta name="description" content="Sound production studio and agency in Berlin: field recording, foley, dialogue, spatial audio, mixing and post-production.">
+<meta name="description" content="Sound agency in Berlin: sound supervision, set and field recording, sound design, mixing in stereo, 5.1 and Dolby Atmos, scoring and acoustics.">
 <link rel="stylesheet" href="fonts.css">
 <style>
-/* Layout: one centered 1200px column, dark ground, pink only as accent and in the top bar */
+/* Layout: one centered 1400px column, dark ground, pink only as accent and in the top bar */
 :root {
   --bg: #0F0E11;
   --bg-deep: #0A090C;
@@ -55,102 +55,87 @@ section[id] { scroll-margin-top: 80px; }
 .sub { margin: 0 0 14px; font-family: var(--display); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-mute); font-weight: 600; }
 h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; }
 
-/* Entry tiles */
-.tiles { display: flex; flex-wrap: wrap; gap: 16px; padding-top: 24px; }
-.tile { position: relative; display: block; height: 460px; border-radius: 5px; overflow: hidden; background: var(--panel); color: var(--ink); text-decoration: none; }
-.tile.big { flex: 3 1 460px; }
-.tile.small { flex: 1 1 260px; }
-.tile img, .tile video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
-.tile:hover img, .tile:hover video { transform: scale(1.04); }
-.tile .shade { position: absolute; inset: 0; background: rgba(15,14,17,.55); opacity: 0; transition: opacity .3s ease; }
-.tile:hover .shade, .tile:focus-visible .shade { opacity: 1; }
-.tile .tlabel { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; padding: 72px 28px 24px; background: linear-gradient(transparent, rgba(15,14,17,.85)); }
-.tile.small .tlabel { align-items: flex-end; text-align: right; }
-.tile .name { font-family: var(--display); font-size: 34px; font-weight: 600; line-height: 1.05; transition: color .25s ease; }
-.tile:hover .name, .tile:focus-visible .name { color: var(--pink); }
-.tile .hint { max-width: 380px; max-height: 0; margin-top: 0; overflow: hidden; opacity: 0; font-family: var(--display); font-size: 16px; line-height: 1.5; color: var(--ink); transition: opacity .3s ease, max-height .3s ease, margin-top .3s ease; }
-.tile:hover .hint, .tile:focus-visible .hint { opacity: 1; max-height: 140px; margin-top: 12px; }
-@media (hover: none) { .tile .hint { opacity: 1; max-height: 140px; margin-top: 12px; } }
-@media (max-width: 600px) { .tile { height: 320px; } .tile .name { font-size: 28px; } }
+/* Hero photo */
+.hero { margin-top: 24px; height: 460px; border-radius: 5px; overflow: hidden; background: var(--panel); }
+.hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
+@media (max-width: 600px) { .hero { height: 280px; } .hero img { object-position: 60% 55%; } }
 
-.intro { padding-block: 56px 24px; }
-.intro h1 { margin: 0; font-size: clamp(30px, 5vw, 44px); line-height: 1.1; }
-.intro p { margin: 4px 0 0; font-size: clamp(17px, 2.85vw, 25px); color: var(--ink-mute); }
-
-.studio { padding-block: 48px; display: flex; flex-direction: column; gap: 18px; }
-.studio .label { border: 0; padding: 0; margin: 0; }
-.studio h3 { margin: 0; font-size: 32px; }
-.studio p { margin: 0; font-size: clamp(18px, 1.9vw, 25px); color: var(--ink-soft); font-weight: 300; }
+/* Sound agency */
+.studio { padding-block: 64px 48px; display: flex; flex-direction: column; gap: 18px; }
+.studio h1 { margin: 0 0 8px; font-size: clamp(34px, 5.5vw, 56px); line-height: 1.05; }
+.studio p { margin: 0; max-width: 60ch; font-size: clamp(18px, 1.9vw, 25px); color: var(--ink-soft); font-weight: 300; }
+.studio p.hello { color: var(--ink); font-weight: 400; }
+.studio p.claim { margin-top: 8px; font-family: var(--display); font-weight: 500; color: var(--pink); }
 
 .services { padding-block: 8px 72px; }
-.svc { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px 32px; padding-top: 8px; }
-@media (max-width: 800px) { .svc { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.svc { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; padding-top: 8px; }
 .svc h4 { margin: 0 0 16px; font-family: var(--display); font-size: 18px; letter-spacing: .16em; text-transform: uppercase; color: var(--pink); font-weight: 600; }
-.svc ul { margin: 0; padding: 0; list-style: none; font-family: var(--display); font-size: clamp(20px, 2.2vw, 30px); line-height: 1.45; }
+.svc ul { margin: 0; padding: 0; list-style: none; font-family: var(--display); font-size: clamp(19px, 1.7vw, 24px); line-height: 1.4; }
+.svc li + li { margin-top: 8px; }
 
 /* Work */
 .block { padding-block: 24px 80px; }
-.player { margin-bottom: 24px; }
+.player { margin-bottom: 40px; }
 .player[hidden] { display: none; }
 .screen { position: relative; aspect-ratio: 16 / 9; max-width: 100%; background: #000; border-radius: 5px; overflow: hidden; }
 .screen iframe, .screen img { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
-.screen .pending { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 24px; text-align: center; background: rgba(15,14,17,.6); font-family: var(--display); font-size: 14px; letter-spacing: .08em; color: var(--ink); }
 .player-meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-top: 14px; }
 .player-meta h3 { margin: 0; font-size: 24px; }
 .player-meta p { margin: 4px 0 0; font-size: 16px; color: var(--ink-mute); }
-.ghost { min-height: 44px; padding: 0 22px; border-radius: 999px; border: 1px solid var(--pink); background: transparent; color: var(--pink); font-family: var(--display); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; cursor: pointer; }
+.ghost { display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 999px; border: 1px solid var(--pink); background: transparent; color: var(--pink); font-family: var(--display); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; text-decoration: none; cursor: pointer; white-space: nowrap; }
 .ghost:hover { background: var(--pink); color: var(--bg); }
+.ghost[hidden] { display: none; }
 
-.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 32px; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px 32px; }
 @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
-.thumb { position: relative; display: block; aspect-ratio: 16 / 9; max-width: 100%; overflow: hidden; border-radius: 5px; border: 0; padding: 0; background: var(--panel); cursor: pointer; font: inherit; color: var(--ink); text-align: left; }
+.card { min-width: 0; }
+.thumb { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 5px; border: 0; padding: 0; background: var(--panel); cursor: pointer; }
 .thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
 .thumb:hover img { transform: scale(1.04); }
-.thumb .cap { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 14px; background: linear-gradient(to top, rgba(15,14,17,.92), rgba(15,14,17,.1) 70%); opacity: 0; transition: opacity .25s ease; }
-.thumb:hover .cap, .thumb:focus-visible .cap { opacity: 1; }
-.thumb .cap b { font-family: var(--display); font-size: 16px; font-weight: 500; line-height: 1.3; }
-.thumb .cap span { font-family: var(--display); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--pink); }
+.thumb::after { content: ""; position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; margin: -26px 0 0 -26px; border-radius: 50%; background: var(--pink); opacity: 0; transition: opacity .25s ease; }
+.thumb::before { content: ""; position: absolute; left: 50%; top: 50%; z-index: 1; margin: -8px 0 0 -4px; border-style: solid; border-width: 8px 0 8px 14px; border-color: transparent transparent transparent var(--bg); opacity: 0; transition: opacity .25s ease; }
+.thumb:hover::after, .thumb:hover::before, .thumb:focus-visible::after, .thumb:focus-visible::before { opacity: 1; }
 .thumb.active { box-shadow: 0 0 0 2px var(--pink); }
-@media (hover: none) { .thumb .cap { opacity: 1; } }
+.card h3 { margin: 16px 0 4px; font-size: 20px; line-height: 1.3; }
+.card .client { margin: 0; font-family: var(--display); font-size: 15px; color: var(--ink-mute); }
+.card .role { margin: 6px 0 0; font-family: var(--display); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--pink); }
+.card .note { margin: 6px 0 0; font-size: 15px; color: var(--ink-soft); font-style: italic; }
 
-/* Sound art */
+/* Experimental work */
 .art-intro { margin-bottom: 36px; }
 .art-intro h3 { margin: 0 0 10px; font-size: 32px; }
-.art-intro p { margin: 0; font-size: clamp(18px, 1.9vw, 25px); color: var(--ink-soft); font-weight: 300; }
-.releases { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px 16px; margin-bottom: 44px; }
-.releases { justify-items: start; }
+.art-intro p { margin: 0; max-width: 60ch; font-size: clamp(18px, 1.9vw, 25px); color: var(--ink-soft); font-weight: 300; }
+.works { margin: 0 0 24px; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.works li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-block: 18px; border-bottom: 1px solid var(--line); }
+.works .w-text { min-width: 0; flex: 1 1 360px; }
+.works b { font-family: var(--display); font-size: 22px; font-weight: 500; }
+.works b small { margin-left: 8px; font-size: 15px; color: var(--ink-faint); font-weight: 400; }
+.works span { display: block; margin-top: 2px; font-size: 16px; color: var(--ink-mute); }
+#art-player { margin: 0 0 48px; }
+.releases { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px 16px; justify-items: start; margin-top: 48px; }
 .releases iframe { width: 100%; max-width: 350px; height: 470px; border: 0; border-radius: 5px; background: var(--panel); }
 .poster { position: absolute; inset: 0; border: 0; padding: 0; background: none; cursor: pointer; }
 .poster img { width: 100%; height: 100%; object-fit: cover; }
-.disco-title { font-size: 22px; letter-spacing: .12em; color: var(--ink); margin-bottom: 18px; }
-.disco { margin: 0 0 16px; padding: 0; list-style: none; border-top: 1px solid var(--line); }
-.disco li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 24px; padding-block: 12px; border-bottom: 1px solid var(--line); }
-.disco b { font-family: var(--display); font-size: 16px; font-weight: 500; }
-.disco span { font-size: 15px; color: var(--ink-mute); }
 
 /* About */
 .about { display: flex; flex-wrap: wrap; gap: 48px; }
-.about-main { flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 40px; }
-.about-main h3 { margin: 0 0 14px; font-size: 28px; }
-.about-main h4 { margin: 0 0 16px; font-family: var(--display); font-size: 22px; font-weight: 500; }
-.about-main p { margin: 0 0 12px; font-size: 18px; color: var(--ink-soft); font-weight: 300; }
-.steps { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }
-.steps b { display: block; margin-bottom: 8px; font-family: var(--display); font-size: 16px; font-weight: 500; }
-.steps b em { font-style: normal; color: var(--pink); margin-right: 6px; }
-.steps span { font-size: 16px; color: var(--ink-mute); }
-.about-main ul.when { margin: 0; padding-left: 20px; font-size: 17px; line-height: 1.75; color: var(--ink-soft); font-weight: 300; }
+.about-main { flex: 999 1 560px; min-width: 0; }
+.about-main p { margin: 0 0 16px; max-width: 62ch; font-size: clamp(18px, 1.6vw, 21px); color: var(--ink-soft); font-weight: 300; }
+.about-main p.credits { font-family: var(--display); font-size: 16px; font-weight: 400; color: var(--ink-mute); }
 .aside { flex: 1 1 300px; display: flex; flex-direction: column; gap: 20px; }
 .portrait { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 5px; filter: grayscale(1); }
 .network { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 26px; }
 .network h4 { margin: 0 0 14px; font-family: var(--display); font-size: 22px; font-weight: 500; }
 .network ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.8; color: var(--ink-soft); }
-.pill { display: inline-flex; align-items: center; min-height: 44px; padding: 0 24px; border-radius: 999px; background: var(--pink); color: var(--bg); text-decoration: none; font-family: var(--display); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
-.pill:hover { background: var(--peach); color: var(--bg); }
 .contact { font-family: var(--display); font-size: 14px; line-height: 1.7; color: var(--ink-mute); }
 .contact strong { color: var(--ink); font-weight: 500; }
 .map { display: block; aspect-ratio: 4 / 3; max-width: 100%; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
 .map img { width: 100%; height: 100%; object-fit: cover; filter: invert(.9) hue-rotate(180deg) saturate(.6); }
+
+/* Newsletter */
+.newsletter { padding-block: 0 64px; }
+.newsletter iframe { display: block; width: 540px; max-width: 100%; height: 305px; margin: 0 auto; border: 0; }
 
 footer { background: var(--bg-deep); border-top: 1px solid var(--line); }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; padding-block: 32px; font-family: var(--display); font-size: 13px; line-height: 1.7; color: var(--ink-faint); }
@@ -165,7 +150,7 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
   <nav class="wrap" aria-label="Main">
     <a href="#top" class="brand">Kris Limbach Studios</a>
     <div class="links">
-      <a href="#studio">Studio / Agency</a>
+      <a href="#studio">Sound Agency</a>
       <a href="#soundart">Sound Art</a>
       <a href="#about">About</a>
     </div>
@@ -174,38 +159,26 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
 
 <main id="top" class="wrap">
 
-  <section class="tiles" aria-label="Areas">
-    <a href="#studio" class="tile big">
-      <img src="img/hero-studio.jpg" alt="Field recorder on a cutting mat" style="object-position: 50% 35%">
-      <span class="shade"></span>
-      <span class="tlabel"><span class="name">Studio<br>Agency</span><span class="hint">Field recording, foley, dialogue, spatial audio and full post-production, with one point of contact.</span></span>
-    </a>
-    <a href="#soundart" class="tile small">
-      <img src="img/hero-art.jpg" alt="Two microphones in shock mounts on small stands" style="object-position: 45% 50%">
-      <span class="shade"></span>
-      <span class="tlabel"><span class="name">Sound<br>Art</span><span class="hint">Sound pieces exploring spatial perception, materiality and environmental recording.</span></span>
-    </a>
-  </section>
-
-  <section class="intro">
-    <h1>Sound Production Studio and Agency</h1>
-    <p>commercial work, specialist coordination, and artistic exploration</p>
-  </section>
+  <div class="hero">
+    <img src="img/hero.jpg" alt="Close-up of the knobs on a mixing desk">
+  </div>
 
   <section id="studio" class="studio">
-    <h2 class="label">Studio / Agency</h2>
-    <h3>Sound Services &amp; Coordination</h3>
-    <p>I work as your sound partner, either handling production in-house or assembling the right team of specialists from my network. Whether you need field recording, foley, dialogue editing, spatial audio, or full post-production, you get one point of contact and consistent creative oversight from brief to delivery.</p>
-    <p class="agency">Similar to booking camera operators or models through an agency, but for sound.</p>
+    <h1>Sound Agency</h1>
+    <p class="hello">Hi, I’m Kris.<br>Sound supervisor, sound designer and composer, based in Berlin.</p>
+    <p>I trained as a physicist, so I care about why things sound the way they do, on set, in the mix and on the final screen.</p>
+    <p>I work with filmmakers, production companies and brands on films, commercials and campaigns. When a production scales, my sound agency scales with it: a hand-picked team of specialists I’ve worked with for years, led by me from shoot to delivery.</p>
+    <p class="claim">One ear across the whole project.</p>
   </section>
 
   <section class="services" aria-labelledby="services-h">
     <h3 id="services-h" class="sub">Services</h3>
     <div class="svc">
-      <div><h4>Recording</h4><ul><li>Set recording</li><li>Ambisonics recording</li></ul></div>
-      <div><h4>Post</h4><ul><li>Sound design</li><li>Audio post-production</li><li>Dolby 5.1 mixing</li></ul></div>
-      <div><h4>Music</h4><ul><li>Scoring &amp; composition</li><li>Vinyl &amp; music mastering</li></ul></div>
-      <div><h4>Supervision</h4><ul><li>Sound supervision</li></ul></div>
+      <div><h4>Supervision</h4><ul><li>Sound supervision</li><li>Team and crew assembly</li><li>Coordination from set to delivery</li></ul></div>
+      <div><h4>Recording</h4><ul><li>Set recording</li><li>Ambisonics recording</li><li>Field recording and foley</li></ul></div>
+      <div><h4>Post</h4><ul><li>Sound design</li><li>Dialogue editing</li><li>Music editing</li><li>Mixing: stereo, 5.1 and immersive (Dolby Atmos)</li></ul></div>
+      <div><h4>Music</h4><ul><li>Scoring and composition</li><li>Mastering for vinyl and streaming</li></ul></div>
+      <div><h4>Acoustics</h4><ul><li>Studio and room treatment</li><li>Acoustic consulting</li></ul></div>
     </div>
   </section>
 
@@ -218,7 +191,7 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
           <h3 id="p-title"></h3>
           <p id="p-tag"></p>
         </div>
-        <button type="button" class="ghost" id="p-close">close</button>
+        <button type="button" class="ghost" id="p-close">back to reel</button>
       </div>
     </div>
     <div class="grid" id="work-grid"></div>
@@ -228,42 +201,26 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
     <h2 id="art-h" class="label">sound art</h2>
     <div class="art-intro">
       <h3>Experimental Work</h3>
-      <p>Alongside client work, I develop sound pieces exploring spatial perception, materiality, and environmental recording. This artistic practice informs and deepens the creative thinking behind all my work.</p>
+      <p>In my own work I use cutting techniques from film editing to build music from field recordings, tape, prepared drums and electronics. The pieces are performed live, released on records, or shown as installations, films and expanded cinema.</p>
     </div>
-    <h3 class="sub">Releases</h3>
-    <div class="releases" id="releases"></div>
-    <h3 class="sub disco-title">Discography</h3>
-    <ul class="disco" id="disco"></ul>
-    <button type="button" class="ghost" id="disco-toggle"></button>
+    <ul class="works" id="works"></ul>
+    <div class="player" id="art-player" hidden>
+      <div class="screen" id="art-screen"></div>
+      <div class="player-meta">
+        <div><h3 id="art-title"></h3></div>
+        <button type="button" class="ghost" id="art-close">close</button>
+      </div>
+    </div>
+    <h3 class="sub" style="margin-top: 48px">Releases</h3>
+    <div class="releases" id="releases" style="margin-top: 0"></div>
   </section>
 
   <section id="about" class="block" aria-labelledby="about-h">
     <h2 id="about-h" class="label">about</h2>
     <div class="about">
       <div class="about-main">
-        <div>
-          <h3>Agency: Sound Production &amp; Creative Coordination</h3>
-          <p>I supervise sound from concept through delivery, whether that means handling full post-production myself or assembling and directing a team of specialists.</p>
-          <p>For larger projects or those requiring niche expertise, I coordinate trusted freelancers across all areas of sound production, maintaining creative and technical oversight throughout. You get one point of contact, consistent quality control, and access to professionals I trust across every discipline.</p>
-        </div>
-        <div>
-          <h4>How it works</h4>
-          <ol class="steps">
-            <li><b><em>01</em>Understanding your needs</b><span>We discuss your project scope, timeline, format requirements and creative goals.</span></li>
-            <li><b><em>02</em>Assembling the right team</b><span>I handle production in-house or bring in specialists from my network (foley artists, field recordists, dialogue editors, re-recording mixers, spatial audio experts), depending on what the project needs.</span></li>
-            <li><b><em>03</em>Creative &amp; technical oversight</b><span>I keep responsibility for the sonic outcome: consistency, quality, and sound that serves your vision. You work with me directly throughout.</span></li>
-            <li><b><em>04</em>Delivery</b><span>Turnkey sound from concept to final file, from a single deliverable to multi-format packages for international distribution.</span></li>
-          </ol>
-        </div>
-        <div>
-          <h4>When to use the agency service</h4>
-          <ul class="when">
-            <li>Projects requiring specialised skills beyond standard post-production (location recording, foley stages, ADR facilities)</li>
-            <li>Large-scale campaigns needing multiple sound professionals working simultaneously</li>
-            <li>Tight turnarounds where additional capacity is needed</li>
-            <li>Technical formats requiring niche expertise (immersive audio, game audio, installation sound)</li>
-          </ul>
-        </div>
+        <p>I’ve worked in sound for over twenty years, on set and in post, for film, television, commercials and art. My work has screened at the Berlinale, Jazzfest Berlin and IFFR Rotterdam, and I’ve composed and recorded scores for the artist John Bock since 2007. I hold a diploma in physics from Freie Universität Berlin. I work in Spanish, English and German.</p>
+        <p class="credits">Full credits on <a href="https://www.crew-united.com/en/Kris-Limbach_132675" target="_blank" rel="noopener">Crew United</a> and <a href="https://www.imdb.com/name/nm2822857" target="_blank" rel="noopener">IMDb</a>.</p>
       </div>
       <aside class="aside">
         <img class="portrait" src="img/portrait.jpg" alt="Portrait of Kris Limbach">
@@ -285,6 +242,11 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
       </aside>
     </div>
   </section>
+
+  <section class="newsletter" aria-labelledby="news-h">
+    <h2 id="news-h" class="label">newsletter</h2>
+    <iframe src="https://bb07ea0e.sibforms.com/v2/serve/MUIFAPNXmNDj3bKqzP1iMS7KAya58-c6gEYRfvN0AK0-Z0CHx1TNDWqXuo1SJK--AMD10Pai23Y0wmWnt1QrTEkiWzSQBFOOlU4uCKH9LjWQFU9Sud5E1p2uHFfb-tjJ1P91niPlNaW_15LgpyKEOuH2uoNGyA1VXhXeZgZWcZ8t0TtBYPUkokoiubEAzG3meg_gGQnYZNe0sHaM" title="Newsletter sign-up" scrolling="auto" loading="lazy" allowfullscreen></iframe>
+  </section>
 </main>
 
 <footer>
@@ -301,35 +263,36 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
 <script>
 /* ============================================================
    CONTENT LISTS (edit here)
-   WORK: [title, category, platform, video id, thumbnail]
-     platform: 'youtube', 'vimeo', or 'link' (opens an external page; put the full URL as id)
-     video id: from the link. youtube.com/watch?v=XXXX -> 'XXXX'
-               vimeo.com/123456 -> '123456'
-               private Vimeo vimeo.com/123456/abcdef -> '123456?h=abcdef'
-     leave id '' if the link is still missing
-     thumbnail: YouTube videos use img/yt-VIDEOID.jpg automatically
-                (save the video's thumbnail there with that name);
-                the image here is only used for Vimeo or videos without a link
+
+   WORK: one block per project card
+     title, client (client or director), role, note (award, festival… or '')
+     play: 'bunny', 'youtube' or 'vimeo'
+     id:   bunny   -> 'LIBRARY/VIDEO'  (from player.mediadelivery.net/play/LIBRARY/VIDEO)
+           youtube -> youtube.com/watch?v=XXXX -> 'XXXX'
+           vimeo   -> vimeo.com/123456 -> '123456'
+     thumb: image in img/
    ============================================================ */
 var WORK = [
-  ['Liebe, D-Mark und Tod (Trailer, 2022)', 'Film', 'youtube', '_9QXAfulvnI', 'img/w04.jpg'],
-  ['IKEA, Weil es manchmal eben sofort sein muss', 'Commercial', 'vimeo', '294532169', 'img/vimeo-294532169.jpg'],
-  ['Zalando, International Transgender Day of Visibility 2024', 'Campaign', 'youtube', 'NwmCVZtcyOo', 'img/w06.jpg'],
-  ['FC Internat, Fußball ist unser Leben (KiKA/hr)', 'TV Series', 'youtube', 'yc-BrUa_Ll4', 'img/w07.jpg'],
-  ['Alice Phoebe Lou, Drive By (Live Acoustic Session)', 'Music', 'youtube', '0Gy9hPE81MU', 'img/w08.jpg'],
-  ['Jean-Michel Jarre with Peaches, Track Story', 'Music', 'youtube', 'SnLJeKWyL6Q', 'img/w09.jpg'],
-  ['Intel, The Making of Drone 100', 'Commercial', 'youtube', 'eZ-js5zn-I0', 'img/w10.jpg'],
-  ['Max Raabe & Palast Orchester, MTV Unplugged Doku', 'Documentary', 'youtube', 'quJJLWXkpAo', 'img/w11.jpg'],
-  ['5 Minutes On… Debussy, Daniel Barenboim', 'Music', 'youtube', 'XiWfPJLp2ko', 'img/w12.jpg'],
-  ['Tim Bendzko, #TIMTRIFFT Peter Maffay', 'Music', 'youtube', '0VyNWE4mE44', 'img/w13.jpg'],
-  ['OXFAM, Make Fruit Fair (Kinowerbung)', 'Campaign', 'youtube', 'cN6xJqxwQk4', 'img/w14.jpg'],
-  ['Zalando, Why I Run: One Berlin Marathon, three stories', 'Commercial', 'youtube', 'IWIyxXMprsQ', ''],
-  ['Zalando, The Ordinary: Welcome to the class of ’25', 'Commercial', 'vimeo', '', 'img/w01.jpg'],
-  ['Eytys, 6 new looks for 2025, Zalando', 'Commercial', 'vimeo', '', 'img/w02.jpg'],
-  ['7:1, Das Jahrhundertspiel (ZDF)', 'Sport', 'vimeo', '', 'img/w03.jpg']
+  { title: 'Liebe, D-Mark und Tod', client: 'Cem Kaya (director)', role: 'Set recording', note: 'Panorama Audience Award, Berlinale 2022 · Preis der deutschen Filmkritik 2023',
+    play: 'bunny', id: '776421/af3c9bd7-7cbf-4939-8edc-88ae0df7b761', thumb: 'img/yt-_9QXAfulvnI.jpg' },
+  { title: 'FC Internat, Fußball ist unser Leben', client: 'KiKA / hr', role: 'Set recording, mixing, delivery', note: '',
+    play: 'bunny', id: '776421/6df6d899-1ac4-4b17-839f-d5fe245d1dd1', thumb: 'img/yt-yc-BrUa_Ll4.jpg' },
+  { title: 'Weil es manchmal eben sofort sein muss', client: 'IKEA', role: 'Set recording', note: '',
+    play: 'vimeo', id: '294532169', thumb: 'img/vimeo-294532169.jpg' },
+  { title: 'International Transgender Day of Visibility 2024', client: 'Zalando', role: 'Set recording, mixing, sound design', note: '',
+    play: 'youtube', id: 'NwmCVZtcyOo', thumb: 'img/yt-NwmCVZtcyOo.jpg' },
+  { title: 'MTV Unplugged, the documentary', client: 'Max Raabe & Palast Orchester', role: 'Set recording', note: '',
+    play: 'youtube', id: 'quJJLWXkpAo', thumb: 'img/yt-quJJLWXkpAo.jpg' },
+  { title: 'Drive By (Live Acoustic Session)', client: 'Alice Phoebe Lou', role: 'Recording, mixing, mastering', note: '',
+    play: 'youtube', id: '0Gy9hPE81MU', thumb: 'img/yt-0Gy9hPE81MU.jpg' }
 ];
+/* Spare projects (move one up into WORK to swap):
+  { title: 'The Making of Drone 100', client: 'Intel', role: '', note: '', play: 'youtube', id: 'eZ-js5zn-I0', thumb: 'img/yt-eZ-js5zn-I0.jpg' },
+  { title: '5 Minutes On… Debussy', client: 'Daniel Barenboim', role: '', note: '', play: 'youtube', id: 'XiWfPJLp2ko', thumb: 'img/yt-XiWfPJLp2ko.jpg' },
+  { title: 'Why I Run: One Berlin Marathon, three stories', client: 'Zalando', role: '', note: '', play: 'youtube', id: 'IWIyxXMprsQ', thumb: 'img/yt-IWIyxXMprsQ.jpg' },
+*/
 
-/* SHOWREEL: shown in the player when the page opens (Bunny Stream embed link) */
+/* SHOWREEL: shown in the player when the page opens */
 var REEL = {
   title: 'Showreel',
   tag: 'Kris Limbach Studios',
@@ -337,46 +300,26 @@ var REEL = {
   poster: 'img/reel-poster.jpg'
 };
 
-/* RELEASES (Bandcamp players): [title, album id, album link] */
-var RELEASES = [
-  ['Temporal Fields & Delocalised Recordings [AABA#15]', '2467973636', 'https://middleeightrecordings.bandcamp.com/album/temporal-fields-delocalised-recordings-aaba-15'],
-  ['Hell’s Bells (Original Motion Picture Soundtrack)', '2325848294', 'https://emittermicro.bandcamp.com/album/hell-s-bells-original-motion-picture-soundtrack'],
-  ['Spectral Evidence', '2925371010', 'https://zeromoon.bandcamp.com/album/spectral-evidence'],
-  ['Dead & Juicy (Original Motion Picture Soundtrack)', '649454284', 'https://emittermicro.bandcamp.com/album/dead-juicy-original-motion-picture-soundtrack'],
-  ['AKP [AABA#10]', '3755395536', 'https://middleeightrecordings.bandcamp.com/album/akp-aaba-10'],
-  ['The Last Day on Earth', '2250621328', 'https://krislimbach.bandcamp.com/album/the-last-day-on-earth'],
-  ['2(3) Incomplete Tryptichs', '949459839', 'https://emittermicro.bandcamp.com/album/2-3-incomplete-tryptichs-pierce-warnecke-kris-limbach'],
-  ['Hopek Quirin, Anton Mobin, Kris Limbach', '3623393236', 'https://emittermicro.bandcamp.com/album/hopek-quirin-anton-mobin-kris-limbach']
+/* EXPERIMENTAL WORK: play: 'bunny' plays on the page; link: opens in a new tab */
+var ART = [
+  { title: 'Ohnmacht', year: '2026', text: 'experimental feature, director, editor and sound',
+    play: 'bunny', id: '722601/cde23c70-fd9f-4097-886d-9ed72b77d576' },
+  { title: 'Feedback for the last Shelter', year: '2026', text: 'live with Ployz, Galiläakirche Berlin',
+    link: 'https://youtu.be/soLKqLcRKGQ', action: 'watch' },
+  { title: 'Dead + Juicy', year: '2018', text: 'film soundtrack for John Bock, vinyl, shown at Hamburger Bahnhof',
+    link: 'https://emittermicro.bandcamp.com/album/dead-juicy-original-motion-picture-soundtrack', action: 'listen' }
 ];
 
-/* DISCOGRAPHY: [title, credits] */
-var DISCO = [
-  ['A Computerized Star', 'on point cloud noise II · Contour Editions'],
-  ['Audiosfera. Experimentación sonora 1980-2020', 'Exhibition, Museo Reina Sofía · curated by Francisco López'],
-  ['A*rray 4, Pt. 1', 'Wendy Eisenberg, Jonathan Zorn, Kris Limbach & Gil Sansón · Andy Graydon / Walther König'],
-  ['Spectral Evidence', 'Rieko Okuda & Kris Limbach · Zeromoon · cassette & digital'],
-  ['Caspar Dead Pain', 'Guido Henneböhl, Hopek Quirin & Kris Limbach · H.A.K Lofi Records'],
-  ['Hell’s Bells (OST)', 'John Bock & Kris Limbach · Walther König / emitter micro · EM 011/2'],
-  ['Dead & Juicy (OST)', 'John Bock & Kris Limbach · Walther König / emitter micro · EM 011/1'],
-  ['AKP [AABA#10]', 'Anton Mobin, Kris Limbach & Pierce Warnecke · Middle Eight / emitter micro · 2018'],
-  ['The Last Day on Earth', 'split, Midori Hirano & Kris Limbach · Staaltape'],
-  ['Extra Skeleton', 'Hopek Quirin & Kris Limbach · A.M.P. Recs'],
-  ['Music for Dysfunctional Airports', 'various artists · Super Sensor'],
-  ['Live at Plateforme Paris 21.04.2014', 'Anton Mobin, Kris Limbach & Hopek Quirin · amp-recs'],
-  ['PARAL-LEL', 'Hopek Quirin & Kris Limbach · Classwar Karaoke'],
-  ['21', 'Hopek Quirin & Kris Limbach · live at Taborkirche Berlin · amp-recs'],
-  ['begin _if_ (3)', 'limited cassette · Agxivatein'],
-  ['Kein Zurück!', 'Kris Limbach, Miguel A. Garcia & Kerstin Podbiel · VHS multiple, ed. 33 · Staalplaat'],
-  ['Untitled CD', 'Hopek Quirin, Anton Mobin & Kris Limbach · emitter micro'],
-  ['9th result of the double-deaf experiment with bubbles', 'Kotomi Nishiwaki, Yuko Matsuyama, Kris Limbach & Hopek Quirin'],
-  ['Sonic Landscape Interventions', 'sound box multiple, ed. 20 · Rumsti Pumsti'],
-  ['¡RE-record!', 'Radio Residue'],
-  ['3pr(iii)4ses', 'Kris Limbach, Flavien Gillié & Joe Stevens · earsheltering'],
-  ['Four Corners of the Night', 'Anton Mobin, Rinus van Alebeek, Christoph Limbach & Pierce Warnecke · Staaltape'],
-  ['2(3), incomplete triptychs', 'Kris Limbach & Pierce Warnecke · emitter micro 001'],
-  ['begin _if_ (2)', 'Christoph Limbach · modisti / framework radio'],
-  ['begin _if_ (1)', 'Christoph Limbach · Contour Editions'],
-  ['A Fragment of a dream reminds me', 'Reward Lost Puppy · self-published, 100 copies']
+/* RELEASES (Bandcamp players): [title, album id] */
+var RELEASES = [
+  ['Temporal Fields & Delocalised Recordings [AABA#15]', '2467973636'],
+  ['Hell’s Bells (Original Motion Picture Soundtrack)', '2325848294'],
+  ['Spectral Evidence', '2925371010'],
+  ['Dead & Juicy (Original Motion Picture Soundtrack)', '649454284'],
+  ['AKP [AABA#10]', '3755395536'],
+  ['The Last Day on Earth', '2250621328'],
+  ['2(3) Incomplete Tryptichs', '949459839'],
+  ['Hopek Quirin, Anton Mobin, Kris Limbach', '3623393236']
 ];
 
 /* ============ page logic (no need to edit below) ============ */
@@ -386,62 +329,51 @@ function el(tag, attrs, kids) {
   (kids || []).forEach(function (c) { n.appendChild(c); });
   return n;
 }
+function embedUrl(play, id) {
+  if (play === 'bunny') return 'https://iframe.mediadelivery.net/embed/' + id + '?autoplay=true';
+  if (play === 'youtube') return 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+  var parts = id.split('?h=');
+  return 'https://player.vimeo.com/video/' + parts[0] + '?autoplay=1&dnt=1' + (parts[1] ? '&h=' + parts[1] : '');
+}
+function frame(src, title) {
+  return el('iframe', { src: src, title: title, allow: 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen', allowfullscreen: '' });
+}
 
+/* Work */
 var grid = document.getElementById('work-grid');
 var player = document.getElementById('player');
 var screen = document.getElementById('screen');
+var closeBtn = document.getElementById('p-close');
 var thumbs = [];
-
-function embedUrl(w) {
-  if (w[2] === 'youtube') return 'https://www.youtube-nocookie.com/embed/' + w[3] + '?autoplay=1&rel=0';
-  var parts = w[3].split('?h=');
-  return 'https://player.vimeo.com/video/' + parts[0] + '?autoplay=1&dnt=1' + (parts[1] ? '&h=' + parts[1] : '');
-}
 
 function openVideo(i) {
   var w = WORK[i];
   screen.innerHTML = '';
-  if (w[2] === 'link') {
-    screen.appendChild(el('img', { src: w[4], alt: '' }));
-    var box = el('div', { class: 'pending' });
-    box.appendChild(el('a', { href: w[3], target: '_blank', rel: 'noopener', class: 'pill', text: 'Watch the film' }));
-    screen.appendChild(box);
-  } else if (w[3]) {
-    screen.appendChild(el('iframe', { src: embedUrl(w), title: w[0], allow: 'autoplay; fullscreen; picture-in-picture', allowfullscreen: '' }));
-  } else {
-    screen.appendChild(el('img', { src: w[4], alt: '' }));
-    screen.appendChild(el('div', { class: 'pending', text: 'Video coming soon' }));
-  }
-  document.getElementById('p-title').textContent = w[0];
-  document.getElementById('p-tag').textContent = w[1];
+  screen.appendChild(frame(embedUrl(w.play, w.id), w.title));
+  document.getElementById('p-title').textContent = w.title;
+  document.getElementById('p-tag').textContent = [w.client, w.role].filter(Boolean).join(' · ');
   thumbs.forEach(function (t, j) { t.classList.toggle('active', j === i); });
   closeBtn.hidden = false;
   player.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
-function thumbFor(w) {
-  var isYT = w[2] === 'youtube' && w[3];
-  var im = el('img', { src: isYT ? 'img/yt-' + w[3] + '.jpg' : w[4], alt: '', loading: 'lazy' });
-  return im;
-}
-
 WORK.forEach(function (w, i) {
-  var b = el('button', { type: 'button', class: 'thumb', 'aria-label': 'Play ' + w[0] }, [
-    thumbFor(w),
-    el('div', { class: 'cap' }, [el('b', { text: w[0] }), el('span', { text: w[1] + ' · play' })])
-  ]);
+  var b = el('button', { type: 'button', class: 'thumb', 'aria-label': 'Play ' + w.title }, [el('img', { src: w.thumb, alt: '', loading: 'lazy' })]);
   b.addEventListener('click', function () { openVideo(i); });
   thumbs.push(b);
-  grid.appendChild(b);
+  var kids = [b, el('h3', { text: w.title })];
+  if (w.client) kids.push(el('p', { class: 'client', text: w.client }));
+  if (w.role) kids.push(el('p', { class: 'role', text: w.role }));
+  if (w.note) kids.push(el('p', { class: 'note', text: w.note }));
+  grid.appendChild(el('article', { class: 'card' }, kids));
 });
 
-var closeBtn = document.getElementById('p-close');
 function showReel() {
   screen.innerHTML = '';
   var poster = el('button', { type: 'button', class: 'poster', 'aria-label': 'Play showreel' }, [el('img', { src: REEL.poster, alt: '' })]);
   poster.addEventListener('click', function () {
     screen.innerHTML = '';
-    screen.appendChild(el('iframe', { src: REEL.src, title: REEL.title, allow: 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen', allowfullscreen: '' }));
+    screen.appendChild(frame(REEL.src, REEL.title));
   });
   screen.appendChild(poster);
   document.getElementById('p-title').textContent = REEL.title;
@@ -449,29 +381,44 @@ function showReel() {
   closeBtn.hidden = true;
   thumbs.forEach(function (t) { t.classList.remove('active'); });
 }
-closeBtn.textContent = 'back to reel';
 closeBtn.addEventListener('click', showReel);
 showReel();
 
+/* Experimental work */
+var works = document.getElementById('works');
+var artPlayer = document.getElementById('art-player');
+var artScreen = document.getElementById('art-screen');
+ART.forEach(function (a) {
+  var text = el('div', { class: 'w-text' }, [
+    el('b', { text: a.title }, [el('small', { text: a.year })]),
+    el('span', { text: a.text })
+  ]);
+  var btn;
+  if (a.play) {
+    btn = el('button', { type: 'button', class: 'ghost', text: 'play' });
+    btn.addEventListener('click', function () {
+      artScreen.innerHTML = '';
+      artScreen.appendChild(frame(embedUrl(a.play, a.id), a.title));
+      document.getElementById('art-title').textContent = a.title + ' (' + a.year + ')';
+      artPlayer.hidden = false;
+      artPlayer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  } else {
+    btn = el('a', { class: 'ghost', href: a.link, target: '_blank', rel: 'noopener', text: a.action + ' \u2197' });
+  }
+  works.appendChild(el('li', {}, [text, btn]));
+});
+document.getElementById('art-close').addEventListener('click', function () {
+  artScreen.innerHTML = '';
+  artPlayer.hidden = true;
+});
+
+/* Bandcamp players */
 var rel = document.getElementById('releases');
 RELEASES.forEach(function (r) {
   var src = 'https://bandcamp.com/EmbeddedPlayer/album=' + r[1] + '/size=large/bgcol=1a181d/linkcol=ee5fae/tracklist=false/';
-  var f = el('iframe', { src: src, title: r[0], loading: 'lazy', seamless: '' });
-  rel.appendChild(f);
+  rel.appendChild(el('iframe', { src: src, title: r[0], loading: 'lazy', seamless: '' }));
 });
-
-var disco = document.getElementById('disco');
-var toggle = document.getElementById('disco-toggle');
-var showAll = false;
-function renderDisco() {
-  disco.innerHTML = '';
-  (showAll ? DISCO : DISCO.slice(0, 8)).forEach(function (d) {
-    disco.appendChild(el('li', {}, [el('b', { text: d[0] }), el('span', { text: d[1] })]));
-  });
-  toggle.textContent = showAll ? 'show less' : 'all releases (' + DISCO.length + ')';
-}
-toggle.addEventListener('click', function () { showAll = !showAll; renderDisco(); });
-renderDisco();
 </script>
 </body>
 </html>
