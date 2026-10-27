@@ -51,7 +51,7 @@ section[id] { scroll-margin-top: 80px; }
   .links a { font-size: 11px; letter-spacing: .12em; white-space: nowrap; }
   section[id] { scroll-margin-top: 70px; }
 }
-.label { margin: 0 0 24px; padding-bottom: 12px; border-bottom: 1px solid var(--line); font-family: var(--display); font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--pink); font-weight: 600; }
+.label { margin: 0 0 32px; padding-bottom: 12px; border-bottom: 1px solid var(--line); font-family: var(--display); font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--pink); font-weight: 600; }
 .sub { margin: 0 0 14px; font-family: var(--display); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-mute); font-weight: 600; }
 h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; }
 
@@ -61,22 +61,22 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; 
 @media (max-width: 600px) { .hero { height: 280px; } .hero img { object-position: 60% 55%; } }
 
 /* Sound agency */
-.studio { padding-block: 64px 88px; display: flex; flex-direction: column; gap: 18px; }
-.studio h1 { margin: 0 0 4px; font-size: clamp(28px, 4vw, 44px); line-height: 1.05; }
-.studio p.hi { margin-bottom: 4px; font-family: var(--display); font-size: clamp(24px, 3.4vw, 38px); font-weight: 500; line-height: 1.1; color: var(--pink); }
+.studio { padding-block: 112px 136px; display: flex; flex-direction: column; gap: 18px; }
+.studio h1 { margin: 0 0 4px; font-size: clamp(28px, 4vw, 44px); line-height: 1.05; color: var(--pink); }
+.studio p.hi { margin-bottom: 4px; font-family: var(--display); font-size: clamp(21px, 2.6vw, 30px); font-weight: 500; line-height: 1.1; color: var(--ink); }
 .studio p { margin: 0; font-size: clamp(18px, 1.9vw, 25px); color: var(--ink-soft); font-weight: 200; }
 .studio p.hello { margin-top: -14px; color: var(--ink); font-weight: 300; }
 .studio p.claim { margin-top: 8px; font-weight: 600; color: var(--ink); }
 
-.services { padding-block: 8px 72px; }
-.services .sub { font-size: 15px; margin-bottom: 20px; }
+.services { padding-block: 0 168px; }
+.services .sub { font-size: 15px; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
 .svc { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; padding-top: 8px; }
 .svc h4 { margin: 0 0 16px; font-family: var(--display); font-size: 20px; letter-spacing: .16em; text-transform: uppercase; color: var(--pink); font-weight: 600; }
 .svc ul { margin: 0; padding: 0; list-style: none; font-family: var(--display); font-size: clamp(21px, 1.9vw, 28px); line-height: 1.35; }
 .svc li + li { margin-top: 8px; }
 
 /* Work */
-.block { padding-block: 24px 80px; }
+.block { padding-block: 0 168px; }
 .player { margin-bottom: 40px; }
 .player[hidden] { display: none; }
 .screen { position: relative; aspect-ratio: 16 / 9; max-width: 100%; background: #000; border-radius: 5px; overflow: hidden; }
@@ -145,12 +145,23 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; 
 }
 
 /* Newsletter */
-.newsletter { padding-block: 0 64px; }
+.newsletter { padding-block: 0 136px; }
 .newsletter iframe { display: block; width: 560px; max-width: 100%; height: 390px; margin: 0; border: 0; }
 
 footer { background: var(--bg-deep); border-top: 1px solid var(--line); }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; padding-block: 32px; font-family: var(--display); font-size: 13px; line-height: 1.7; color: var(--ink-faint); }
 footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+
+/* Reveal on scroll, cards cascade in (same as marianahoyos.com) */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.reveal .card { opacity: 0; transform: translateY(16px); transition: opacity .55s ease, transform .55s ease; }
+.reveal.in .card { opacity: 1; transform: none; }
+.reveal.in .card:nth-child(2) { transition-delay: .07s; }
+.reveal.in .card:nth-child(3) { transition-delay: .14s; }
+.reveal.in .card:nth-child(4) { transition-delay: .21s; }
+.reveal.in .card:nth-child(5) { transition-delay: .28s; }
+.reveal.in .card:nth-child(6) { transition-delay: .35s; }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
 </style>
@@ -174,7 +185,7 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
     <img src="img/hero.jpg" alt="Close-up of the knobs on a mixing desk">
   </div>
 
-  <section id="studio" class="studio">
+  <section id="studio" class="studio reveal">
     <h1>Sound Agency</h1>
     <p class="hi">Hi, I’m Kris.</p>
     <p class="hello">Sound supervisor, sound designer and composer, based in Berlin.</p>
@@ -183,7 +194,7 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
     <p class="claim">One ear across the whole project.</p>
   </section>
 
-  <section class="services" aria-labelledby="services-h">
+  <section class="services reveal" aria-labelledby="services-h">
     <h3 id="services-h" class="sub">Services</h3>
     <div class="svc">
       <div><h4>Supervision</h4><ul><li>Sound supervision</li><li>Team and crew assembly</li><li>Coordination from set to delivery</li></ul></div>
@@ -194,7 +205,7 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
     </div>
   </section>
 
-  <section class="block" aria-labelledby="work-h">
+  <section class="block reveal" aria-labelledby="work-h">
     <h2 id="work-h" class="label">work</h2>
     <div class="player" id="player">
       <div class="screen" id="screen"></div>
@@ -209,7 +220,7 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
     <div class="grid" id="work-grid"></div>
   </section>
 
-  <section id="soundart" class="block" aria-labelledby="art-h">
+  <section id="soundart" class="block reveal" aria-labelledby="art-h">
     <h2 id="art-h" class="label">sound art</h2>
     <div class="art-intro">
       <h3>Experimental Work</h3>
@@ -225,12 +236,12 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
     <div class="grid" id="works"></div>
   </section>
 
-  <section id="about" class="block" aria-labelledby="about-h">
+  <section id="about" class="block reveal" aria-labelledby="about-h">
     <h2 id="about-h" class="label">about</h2>
     <div class="about">
       <div class="about-main">
         <p>I’ve worked in sound for over twenty years, on set and in post, for film, television, commercials and art. My work has screened at the Berlinale, Jazzfest Berlin and IFFR Rotterdam, and I’ve composed and recorded scores for the artist John Bock since 2007. I hold a diploma in physics from Freie Universität Berlin. I work in Spanish, English and German.</p>
-        <p class="credits">Full credits on <a href="https://www.crew-united.com/en/Kris-Limbach_132675" target="_blank" rel="noopener">Crew United</a> and <a href="https://www.imdb.com/name/nm2822857" target="_blank" rel="noopener">IMDb</a>.</p>
+        <p class="credits">Full credits on <a href="https://www.crew-united.com/en/Kris-Limbach_132675.html" target="_blank" rel="noopener">Crew United</a> and <a href="https://www.imdb.com/name/nm2822857" target="_blank" rel="noopener">IMDb</a>.</p>
       </div>
       <img class="portrait" src="img/portrait.jpg" alt="Portrait of Kris Limbach">
       <div class="about-info">
@@ -251,6 +262,7 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
             <h4>Contact</h4>
             <div class="contact"><strong>Kris Limbach</strong><br>mail: <a href="mailto:krislimbach@posteo.org">krislimbach@posteo.org</a></div>
           </div>
+          <a class="ghost" href="https://www.instagram.com/krislimbachstudios/" target="_blank" rel="noopener">Instagram &#8599;</a>
           <div class="contact">Kiefholzstr. 19, Gewerbehof 2<br>12453 Berlin (Treptow), Germany</div>
         </div>
         <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Kiefholzstr.+19,+12453+Berlin" target="_blank" rel="noopener"><img src="img/map.jpg" alt="Map: Kiefholzstraße 19, Berlin Treptow"></a>
@@ -258,7 +270,7 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
     </div>
   </section>
 
-  <section class="newsletter" aria-labelledby="news-h">
+  <section class="newsletter reveal" aria-labelledby="news-h">
     <h2 id="news-h" class="label">newsletter</h2>
     <iframe src="https://bb07ea0e.sibforms.com/v2/serve/MUIFAPNXmNDj3bKqzP1iMS7KAya58-c6gEYRfvN0AK0-Z0CHx1TNDWqXuo1SJK--AMD10Pai23Y0wmWnt1QrTEkiWzSQBFOOlU4uCKH9LjWQFU9Sud5E1p2uHFfb-tjJ1P91niPlNaW_15LgpyKEOuH2uoNGyA1VXhXeZgZWcZ8t0TtBYPUkokoiubEAzG3meg_gGQnYZNe0sHaM" title="Newsletter sign-up" scrolling="auto" loading="lazy" allowfullscreen></iframe>
   </section>
@@ -269,7 +281,7 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
     <div><span style="color: var(--ink)">Kris Limbach</span><br>mail: <a href="mailto:krislimbach@posteo.org">krislimbach@posteo.org</a></div>
     <div>Kiefholzstr. 19, Gewerbehof 2<br>12453 Berlin (Treptow), Germany</div>
     <div style="display: flex; flex-direction: column; gap: 8px">
-      <div class="row"><a href="https://krislimbach.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a><a href="https://vimeo.com/emitter19" target="_blank" rel="noopener">Vimeo</a><a href="https://krislimbach.com" target="_blank" rel="noopener">krislimbach.com</a></div>
+      <div class="row"><a href="https://www.instagram.com/krislimbachstudios/" target="_blank" rel="noopener">Instagram</a><a href="https://krislimbach.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a><a href="https://vimeo.com/emitter19" target="_blank" rel="noopener">Vimeo</a><a href="https://krislimbach.com" target="_blank" rel="noopener">krislimbach.com</a></div>
       <div class="row"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><span>© 2026 Kris Limbach</span></div>
     </div>
   </div>
@@ -310,7 +322,7 @@ var WORK = [
 /* SHOWREEL: shown in the player when the page opens */
 var REEL = {
   title: 'Showreel',
-  tag: 'Kris Limbach Studios',
+  tag: '',
   src: 'https://iframe.mediadelivery.net/embed/722601/908dd182-cf38-4b52-88b5-ced59085a82d?autoplay=true',
   poster: 'img/reel-poster.jpg'
 };
@@ -425,6 +437,12 @@ document.getElementById('art-close').addEventListener('click', function () {
   artPlayer.hidden = true;
 });
 
+
+/* Reveal on scroll */
+var io = new IntersectionObserver(function (entries) {
+  entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(function (n) { io.observe(n); });
 </script>
 </body>
 </html>
