@@ -56,12 +56,14 @@ section[id] { scroll-margin-top: 80px; }
 h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; }
 
 /* Hero photo */
-.hero { margin-top: 24px; height: 460px; border-radius: 5px; overflow: hidden; background: var(--panel); }
-.hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
-@media (max-width: 600px) { .hero { height: 280px; } .hero img { object-position: 60% 55%; } }
+.hero { position: relative; margin-top: 24px; height: 460px; border-radius: 5px; overflow: hidden; background: var(--panel); }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,14,17,.75), rgba(15,14,17,0) 45%); }
+.hero h1 { position: absolute; left: 32px; bottom: 26px; z-index: 1; margin: 0; font-size: clamp(30px, 4.4vw, 52px); line-height: 1.05; color: var(--pink); }
+.hero img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
+@media (max-width: 600px) { .hero h1 { left: 18px; bottom: 16px; } .hero { height: 280px; } .hero img { object-position: 60% 55%; } }
 
 /* Sound agency */
-.studio { padding-block: 112px 136px; display: flex; flex-direction: column; gap: 18px; }
+.studio { padding-block: 88px 136px; display: flex; flex-direction: column; gap: 18px; }
 .studio h1 { margin: 0 0 4px; font-size: clamp(28px, 4vw, 44px); line-height: 1.05; color: var(--pink); }
 .studio p.hi { margin-bottom: 4px; font-family: var(--display); font-size: clamp(21px, 2.6vw, 30px); font-weight: 500; line-height: 1.1; color: var(--ink); }
 .studio p { margin: 0; font-size: clamp(18px, 1.9vw, 25px); color: var(--ink-soft); font-weight: 200; }
@@ -121,27 +123,26 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; 
 
 /* About: text and portrait side by side, then network, contact and map in one row */
 .about { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 24px; align-items: start; }
-.about-main { grid-column: span 2; padding-right: 24px; }
+.about-main { grid-column: span 2; padding-right: 24px; align-self: center; }
 .about-main p { margin: 0 0 16px; font-size: clamp(18px, 1.7vw, 23px); color: var(--ink-soft); font-weight: 200; }
 .about-main p.credits { margin-top: 24px; font-family: var(--display); font-size: 16px; font-weight: 400; color: var(--ink-mute); }
-.portrait { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 65% 35%; border-radius: 5px; filter: grayscale(1); }
+.portrait { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 50%; border-radius: 5px; filter: grayscale(1); }
 .about-info { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
-.network { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 26px; }
-.network h4 { margin: 0 0 14px; font-family: var(--display); font-size: 22px; font-weight: 500; }
-.network ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.8; color: var(--ink-soft); font-weight: 300; }
-.reach { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 16px; padding: 26px; border: 1px solid var(--line); border-radius: 8px; }
-.reach h4 { margin: 0 0 16px; font-family: var(--display); font-size: 28px; font-weight: 500; }
+.reach { grid-column: span 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; align-content: center; gap: 24px; padding: 32px; border: 1px solid var(--line); border-radius: 8px; }
+.reach-col { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+.reach h4 { margin: 0; font-family: var(--display); font-size: 28px; font-weight: 500; }
 .reach .contact { font-size: 19px; }
 .contact { font-family: var(--display); font-size: 16px; line-height: 1.7; color: var(--ink-mute); }
 .contact strong { color: var(--ink); font-weight: 500; }
-.map { display: block; min-height: 240px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
-.map img { width: 100%; height: 100%; object-fit: cover; filter: invert(.9) hue-rotate(180deg) saturate(.6); }
+.map { position: relative; display: block; aspect-ratio: 1 / 1; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.map img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: invert(.9) hue-rotate(180deg) saturate(.6); }
 @media (max-width: 900px) {
   .about { grid-template-columns: minmax(0, 1fr); }
   .about-main { grid-column: auto; padding-right: 0; }
   .portrait { max-width: 420px; }
   .about-info { grid-template-columns: minmax(0, 1fr); }
-  .map { aspect-ratio: 4 / 3; min-height: 0; }
+  .reach { grid-column: auto; grid-template-columns: minmax(0, 1fr); }
+  .map { aspect-ratio: 4 / 3; }
 }
 
 /* Newsletter */
@@ -183,10 +184,10 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
 
   <div class="hero">
     <img src="img/hero.jpg" alt="Close-up of the knobs on a mixing desk">
+    <h1>Sound Agency</h1>
   </div>
 
   <section id="studio" class="studio reveal">
-    <h1>Sound Agency</h1>
     <p class="hi">Hi, I’m Kris.</p>
     <p class="hello">Sound supervisor, sound designer and composer, based in Berlin.</p>
     <p>I trained as a physicist, so I care about why things sound the way they do, on set, in the mix and on the final screen.</p>
@@ -245,25 +246,16 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
       </div>
       <img class="portrait" src="img/portrait.jpg" alt="Portrait of Kris Limbach">
       <div class="about-info">
-        <div class="network">
-          <h4>The network</h4>
-          <ul>
-            <li>Field recording &amp; location sound</li>
-            <li>Foley artistry</li>
-            <li>Dialogue editing &amp; ADR</li>
-            <li>Re-recording mixing</li>
-            <li>Spatial / immersive audio production</li>
-            <li>Sound design &amp; synthesis</li>
-            <li>Mastering &amp; technical delivery</li>
-          </ul>
-        </div>
         <div class="reach">
-          <div>
+          <div class="reach-col">
             <h4>Contact</h4>
             <div class="contact"><strong>Kris Limbach</strong><br>mail: <a href="mailto:krislimbach@posteo.org">krislimbach@posteo.org</a></div>
+            <a class="ghost" href="https://www.instagram.com/krislimbachstudios/" target="_blank" rel="noopener">Instagram &#8599;</a>
           </div>
-          <a class="ghost" href="https://www.instagram.com/krislimbachstudios/" target="_blank" rel="noopener">Instagram &#8599;</a>
-          <div class="contact">Kiefholzstr. 19, Gewerbehof 2<br>12453 Berlin (Treptow), Germany</div>
+          <div class="reach-col">
+            <h4>Studio</h4>
+            <div class="contact">Kiefholzstr. 19, Gewerbehof 2<br>12453 Berlin (Treptow)<br>Germany</div>
+          </div>
         </div>
         <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Kiefholzstr.+19,+12453+Berlin" target="_blank" rel="noopener"><img src="img/map.jpg" alt="Map: Kiefholzstraße 19, Berlin Treptow"></a>
       </div>
