@@ -115,15 +115,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; 
 .art-intro { margin-bottom: 36px; }
 .art-intro h3 { margin: 0 0 10px; font-size: 32px; }
 .art-intro p { margin: 0; font-size: clamp(18px, 1.9vw, 25px); color: var(--ink-soft); font-weight: 200; }
-.works { margin: 0 0 24px; padding: 0; list-style: none; border-top: 1px solid var(--line); }
-.works li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-block: 18px; border-bottom: 1px solid var(--line); }
-.works .w-text { min-width: 0; flex: 1 1 360px; }
-.works b { font-family: var(--display); font-size: 22px; font-weight: 500; }
-.works b small { margin-left: 8px; font-size: 15px; color: var(--ink-faint); font-weight: 400; }
-.works span { display: block; margin-top: 2px; font-size: 16px; color: var(--ink-mute); }
 #art-player { margin: 0 0 48px; }
-.releases { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px 16px; justify-items: start; margin-top: 48px; }
-.releases iframe { width: 100%; max-width: 350px; height: 470px; border: 0; border-radius: 5px; background: var(--panel); }
 .poster { position: absolute; inset: 0; border: 0; padding: 0; background: none; cursor: pointer; }
 .poster img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -154,7 +146,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; 
 
 /* Newsletter */
 .newsletter { padding-block: 0 64px; }
-.newsletter iframe { display: block; width: 560px; max-width: 100%; height: 520px; margin: 0; border: 0; }
+.newsletter iframe { display: block; width: 560px; max-width: 100%; height: 390px; margin: 0; border: 0; }
 
 footer { background: var(--bg-deep); border-top: 1px solid var(--line); }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; padding-block: 32px; font-family: var(--display); font-size: 13px; line-height: 1.7; color: var(--ink-faint); }
@@ -223,7 +215,6 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
       <h3>Experimental Work</h3>
       <p>In my own work I use cutting techniques from film editing to build music from field recordings, tape, prepared drums and electronics. The pieces are performed live, released on records, or shown as installations, films and expanded cinema.</p>
     </div>
-    <ul class="works" id="works"></ul>
     <div class="player" id="art-player" hidden>
       <div class="screen" id="art-screen"></div>
       <div class="player-meta">
@@ -231,8 +222,7 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
         <button type="button" class="ghost" id="art-close">close</button>
       </div>
     </div>
-    <h3 class="sub" style="margin-top: 48px">Releases</h3>
-    <div class="releases" id="releases" style="margin-top: 0"></div>
+    <div class="grid" id="works"></div>
   </section>
 
   <section id="about" class="block" aria-labelledby="about-h">
@@ -325,26 +315,17 @@ var REEL = {
   poster: 'img/reel-poster.jpg'
 };
 
-/* EXPERIMENTAL WORK: play: 'bunny' plays on the page; link: opens in a new tab */
+/* EXPERIMENTAL WORK cards: play: 'bunny' plays on the page; link: opens in a new tab; thumb: image */
 var ART = [
-  { title: 'Ohnmacht', year: '2026', text: 'experimental feature, director, editor and sound',
-    play: 'bunny', id: '722601/cde23c70-fd9f-4097-886d-9ed72b77d576' },
-  { title: 'Feedback for the last Shelter', year: '2026', text: 'live with Ployz, Galiläakirche Berlin',
-    link: 'https://youtu.be/soLKqLcRKGQ', action: 'watch' },
-  { title: 'Dead + Juicy', year: '2018', text: 'film soundtrack for John Bock, vinyl, shown at Hamburger Bahnhof',
-    link: 'https://emittermicro.bandcamp.com/album/dead-juicy-original-motion-picture-soundtrack', action: 'listen' }
-];
-
-/* RELEASES (Bandcamp players): [title, album id] */
-var RELEASES = [
-  ['Temporal Fields & Delocalised Recordings [AABA#15]', '2467973636'],
-  ['Hell’s Bells (Original Motion Picture Soundtrack)', '2325848294'],
-  ['Spectral Evidence', '2925371010'],
-  ['Dead & Juicy (Original Motion Picture Soundtrack)', '649454284'],
-  ['AKP [AABA#10]', '3755395536'],
-  ['The Last Day on Earth', '2250621328'],
-  ['2(3) Incomplete Tryptichs', '949459839'],
-  ['Hopek Quirin, Anton Mobin, Kris Limbach', '3623393236']
+  { title: 'Ohnmacht', year: '2026', text: 'Experimental feature, director, editor and sound',
+    play: 'bunny', id: '722601/cde23c70-fd9f-4097-886d-9ed72b77d576', action: 'Play',
+    thumb: 'img/art-ohnmacht.jpg' },
+  { title: 'Feedback for the last Shelter', year: '2026', text: 'Live with Ployz, Galiläakirche Berlin',
+    link: 'https://youtu.be/soLKqLcRKGQ', action: 'Watch on YouTube \u2197',
+    thumb: 'img/art-ployz.jpg' },
+  { title: 'Dead + Juicy', year: '2018', text: 'Film soundtrack for John Bock, vinyl, shown at Hamburger Bahnhof',
+    link: 'https://emittermicro.bandcamp.com/album/dead-juicy-original-motion-picture-soundtrack', action: 'Listen on Bandcamp \u2197',
+    thumb: 'img/art-dead-juicy.jpg' }
 ];
 
 /* ============ page logic (no need to edit below) ============ */
@@ -421,14 +402,13 @@ var works = document.getElementById('works');
 var artPlayer = document.getElementById('art-player');
 var artScreen = document.getElementById('art-screen');
 ART.forEach(function (a) {
-  var text = el('div', { class: 'w-text' }, [
-    el('b', { text: a.title }, [el('small', { text: a.year })]),
-    el('span', { text: a.text })
-  ]);
-  var btn;
+  var info = { title: a.title + ' (' + a.year + ')', client: a.text, role: a.action };
+  var img = el('img', { src: a.thumb, alt: '', loading: 'lazy' });
+  var kids = [img, el('span', { class: 'shade' }), el('span', { class: 'info', 'aria-hidden': 'true' }, infoSpans(info))];
+  var t;
   if (a.play) {
-    btn = el('button', { type: 'button', class: 'ghost', text: 'play' });
-    btn.addEventListener('click', function () {
+    t = el('button', { type: 'button', class: 'thumb', 'aria-label': 'Play ' + a.title }, kids);
+    t.addEventListener('click', function () {
       artScreen.innerHTML = '';
       artScreen.appendChild(frame(embedUrl(a.play, a.id), a.title));
       document.getElementById('art-title').textContent = a.title + ' (' + a.year + ')';
@@ -436,21 +416,15 @@ ART.forEach(function (a) {
       artPlayer.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   } else {
-    btn = el('a', { class: 'ghost', href: a.link, target: '_blank', rel: 'noopener', text: a.action + ' \u2197' });
+    t = el('a', { class: 'thumb', href: a.link, target: '_blank', rel: 'noopener', 'aria-label': a.title + ', ' + a.action }, kids);
   }
-  works.appendChild(el('li', {}, [text, btn]));
+  works.appendChild(el('article', { class: 'card' }, [t, el('div', { class: 'below' }, infoSpans(info))]));
 });
 document.getElementById('art-close').addEventListener('click', function () {
   artScreen.innerHTML = '';
   artPlayer.hidden = true;
 });
 
-/* Bandcamp players */
-var rel = document.getElementById('releases');
-RELEASES.forEach(function (r) {
-  var src = 'https://bandcamp.com/EmbeddedPlayer/album=' + r[1] + '/size=large/bgcol=1a181d/linkcol=ee5fae/tracklist=false/';
-  rel.appendChild(el('iframe', { src: src, title: r[0], loading: 'lazy', seamless: '' }));
-});
 </script>
 </body>
 </html>
