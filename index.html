@@ -61,16 +61,18 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; 
 @media (max-width: 600px) { .hero { height: 280px; } .hero img { object-position: 60% 55%; } }
 
 /* Sound agency */
-.studio { padding-block: 64px 48px; display: flex; flex-direction: column; gap: 18px; }
-.studio h1 { margin: 0 0 8px; font-size: clamp(34px, 5.5vw, 56px); line-height: 1.05; }
-.studio p { margin: 0; max-width: 60ch; font-size: clamp(18px, 1.9vw, 25px); color: var(--ink-soft); font-weight: 300; }
-.studio p.hello { color: var(--ink); font-weight: 400; }
-.studio p.claim { margin-top: 8px; font-family: var(--display); font-weight: 500; color: var(--pink); }
+.studio { padding-block: 64px 88px; display: flex; flex-direction: column; gap: 18px; }
+.studio h1 { margin: 0 0 4px; font-size: clamp(28px, 4vw, 44px); line-height: 1.05; }
+.studio p.hi { margin-bottom: 4px; font-family: var(--display); font-size: clamp(24px, 3.4vw, 38px); font-weight: 500; line-height: 1.1; color: var(--pink); }
+.studio p { margin: 0; font-size: clamp(18px, 1.9vw, 25px); color: var(--ink-soft); font-weight: 200; }
+.studio p.hello { margin-top: -14px; color: var(--ink); font-weight: 300; }
+.studio p.claim { margin-top: 8px; font-weight: 600; color: var(--ink); }
 
 .services { padding-block: 8px 72px; }
+.services .sub { font-size: 15px; margin-bottom: 20px; }
 .svc { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; padding-top: 8px; }
-.svc h4 { margin: 0 0 16px; font-family: var(--display); font-size: 18px; letter-spacing: .16em; text-transform: uppercase; color: var(--pink); font-weight: 600; }
-.svc ul { margin: 0; padding: 0; list-style: none; font-family: var(--display); font-size: clamp(19px, 1.7vw, 24px); line-height: 1.4; }
+.svc h4 { margin: 0 0 16px; font-family: var(--display); font-size: 20px; letter-spacing: .16em; text-transform: uppercase; color: var(--pink); font-weight: 600; }
+.svc ul { margin: 0; padding: 0; list-style: none; font-family: var(--display); font-size: clamp(21px, 1.9vw, 28px); line-height: 1.35; }
 .svc li + li { margin-top: 8px; }
 
 /* Work */
@@ -86,26 +88,33 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; 
 .ghost:hover { background: var(--pink); color: var(--bg); }
 .ghost[hidden] { display: none; }
 
-.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px 32px; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
 .card { min-width: 0; }
 .thumb { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 5px; border: 0; padding: 0; background: var(--panel); cursor: pointer; }
 .thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
 .thumb:hover img { transform: scale(1.04); }
-.thumb::after { content: ""; position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; margin: -26px 0 0 -26px; border-radius: 50%; background: var(--pink); opacity: 0; transition: opacity .25s ease; }
-.thumb::before { content: ""; position: absolute; left: 50%; top: 50%; z-index: 1; margin: -8px 0 0 -4px; border-style: solid; border-width: 8px 0 8px 14px; border-color: transparent transparent transparent var(--bg); opacity: 0; transition: opacity .25s ease; }
-.thumb:hover::after, .thumb:hover::before, .thumb:focus-visible::after, .thumb:focus-visible::before { opacity: 1; }
+.thumb .shade { position: absolute; inset: 0; background: rgba(15,14,17,.68); opacity: 0; transition: opacity .3s ease; }
+.thumb .info { position: absolute; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity .3s ease, transform .3s ease; }
+.thumb:hover .shade, .thumb:focus-visible .shade, .thumb:hover .info, .thumb:focus-visible .info { opacity: 1; transform: none; }
+.thumb::after { content: ""; position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; margin: -26px 0 0 -26px; border-radius: 50%; background: rgba(255,255,255,.22); border: 1px solid rgba(255,255,255,.45); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-sizing: border-box; opacity: 1; transition: opacity .25s ease; }
+.thumb::before { content: ""; position: absolute; left: 50%; top: 50%; z-index: 1; margin: -8px 0 0 -4px; border-style: solid; border-width: 8px 0 8px 14px; border-color: transparent transparent transparent #000; opacity: 1; transition: opacity .25s ease; }
+@media (hover: hover) { .thumb:hover::after, .thumb:hover::before, .thumb:focus-visible::after, .thumb:focus-visible::before { opacity: 0; } }
 .thumb.active { box-shadow: 0 0 0 2px var(--pink); }
-.card h3 { margin: 16px 0 4px; font-size: 20px; line-height: 1.3; }
-.card .client { margin: 0; font-family: var(--display); font-size: 15px; color: var(--ink-mute); }
-.card .role { margin: 6px 0 0; font-family: var(--display); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--pink); }
-.card .note { margin: 6px 0 0; font-size: 15px; color: var(--ink-soft); font-style: italic; }
+.t { font-family: var(--display); font-size: 20px; font-weight: 500; line-height: 1.25; color: var(--pink); }
+.c { font-family: var(--display); font-size: 15px; color: var(--ink); }
+.r { font-family: var(--display); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.n { font-family: var(--body); font-size: 15px; font-style: italic; color: var(--ink-soft); }
+.below { display: none; padding-top: 14px; flex-direction: column; gap: 4px; }
+.below .t { color: var(--ink); }
+.below .r { color: var(--pink); }
+@media (hover: none) { .thumb .info, .thumb .shade { display: none; } .below { display: flex; } }
 
 /* Experimental work */
 .art-intro { margin-bottom: 36px; }
 .art-intro h3 { margin: 0 0 10px; font-size: 32px; }
-.art-intro p { margin: 0; max-width: 60ch; font-size: clamp(18px, 1.9vw, 25px); color: var(--ink-soft); font-weight: 300; }
+.art-intro p { margin: 0; font-size: clamp(18px, 1.9vw, 25px); color: var(--ink-soft); font-weight: 200; }
 .works { margin: 0 0 24px; padding: 0; list-style: none; border-top: 1px solid var(--line); }
 .works li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-block: 18px; border-bottom: 1px solid var(--line); }
 .works .w-text { min-width: 0; flex: 1 1 360px; }
@@ -118,24 +127,34 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; 
 .poster { position: absolute; inset: 0; border: 0; padding: 0; background: none; cursor: pointer; }
 .poster img { width: 100%; height: 100%; object-fit: cover; }
 
-/* About */
-.about { display: flex; flex-wrap: wrap; gap: 48px; }
-.about-main { flex: 999 1 560px; min-width: 0; }
-.about-main p { margin: 0 0 16px; max-width: 62ch; font-size: clamp(18px, 1.6vw, 21px); color: var(--ink-soft); font-weight: 300; }
-.about-main p.credits { font-family: var(--display); font-size: 16px; font-weight: 400; color: var(--ink-mute); }
-.aside { flex: 1 1 300px; display: flex; flex-direction: column; gap: 20px; }
-.portrait { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 5px; filter: grayscale(1); }
+/* About: text and portrait side by side, then network, contact and map in one row */
+.about { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 24px; align-items: start; }
+.about-main { grid-column: span 2; padding-right: 24px; }
+.about-main p { margin: 0 0 16px; font-size: clamp(18px, 1.7vw, 23px); color: var(--ink-soft); font-weight: 200; }
+.about-main p.credits { margin-top: 24px; font-family: var(--display); font-size: 16px; font-weight: 400; color: var(--ink-mute); }
+.portrait { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 65% 35%; border-radius: 5px; filter: grayscale(1); }
+.about-info { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
 .network { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 26px; }
 .network h4 { margin: 0 0 14px; font-family: var(--display); font-size: 22px; font-weight: 500; }
-.network ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.8; color: var(--ink-soft); }
-.contact { font-family: var(--display); font-size: 14px; line-height: 1.7; color: var(--ink-mute); }
+.network ul { margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.8; color: var(--ink-soft); font-weight: 300; }
+.reach { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 16px; padding: 26px; border: 1px solid var(--line); border-radius: 8px; }
+.reach h4 { margin: 0 0 16px; font-family: var(--display); font-size: 28px; font-weight: 500; }
+.reach .contact { font-size: 19px; }
+.contact { font-family: var(--display); font-size: 16px; line-height: 1.7; color: var(--ink-mute); }
 .contact strong { color: var(--ink); font-weight: 500; }
-.map { display: block; aspect-ratio: 4 / 3; max-width: 100%; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.map { display: block; min-height: 240px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
 .map img { width: 100%; height: 100%; object-fit: cover; filter: invert(.9) hue-rotate(180deg) saturate(.6); }
+@media (max-width: 900px) {
+  .about { grid-template-columns: minmax(0, 1fr); }
+  .about-main { grid-column: auto; padding-right: 0; }
+  .portrait { max-width: 420px; }
+  .about-info { grid-template-columns: minmax(0, 1fr); }
+  .map { aspect-ratio: 4 / 3; min-height: 0; }
+}
 
 /* Newsletter */
 .newsletter { padding-block: 0 64px; }
-.newsletter iframe { display: block; width: 540px; max-width: 100%; height: 305px; margin: 0 auto; border: 0; }
+.newsletter iframe { display: block; width: 560px; max-width: 100%; height: 520px; margin: 0; border: 0; }
 
 footer { background: var(--bg-deep); border-top: 1px solid var(--line); }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; padding-block: 32px; font-family: var(--display); font-size: 13px; line-height: 1.7; color: var(--ink-faint); }
@@ -165,7 +184,8 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
 
   <section id="studio" class="studio">
     <h1>Sound Agency</h1>
-    <p class="hello">Hi, I’m Kris.<br>Sound supervisor, sound designer and composer, based in Berlin.</p>
+    <p class="hi">Hi, I’m Kris.</p>
+    <p class="hello">Sound supervisor, sound designer and composer, based in Berlin.</p>
     <p>I trained as a physicist, so I care about why things sound the way they do, on set, in the mix and on the final screen.</p>
     <p>I work with filmmakers, production companies and brands on films, commercials and campaigns. When a production scales, my sound agency scales with it: a hand-picked team of specialists I’ve worked with for years, led by me from shoot to delivery.</p>
     <p class="claim">One ear across the whole project.</p>
@@ -222,8 +242,8 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
         <p>I’ve worked in sound for over twenty years, on set and in post, for film, television, commercials and art. My work has screened at the Berlinale, Jazzfest Berlin and IFFR Rotterdam, and I’ve composed and recorded scores for the artist John Bock since 2007. I hold a diploma in physics from Freie Universität Berlin. I work in Spanish, English and German.</p>
         <p class="credits">Full credits on <a href="https://www.crew-united.com/en/Kris-Limbach_132675" target="_blank" rel="noopener">Crew United</a> and <a href="https://www.imdb.com/name/nm2822857" target="_blank" rel="noopener">IMDb</a>.</p>
       </div>
-      <aside class="aside">
-        <img class="portrait" src="img/portrait.jpg" alt="Portrait of Kris Limbach">
+      <img class="portrait" src="img/portrait.jpg" alt="Portrait of Kris Limbach">
+      <div class="about-info">
         <div class="network">
           <h4>The network</h4>
           <ul>
@@ -236,10 +256,15 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
             <li>Mastering &amp; technical delivery</li>
           </ul>
         </div>
-        <div class="contact"><strong>Kris Limbach</strong><br>mail: <a href="mailto:krislimbach@posteo.org">krislimbach@posteo.org</a></div>
+        <div class="reach">
+          <div>
+            <h4>Contact</h4>
+            <div class="contact"><strong>Kris Limbach</strong><br>mail: <a href="mailto:krislimbach@posteo.org">krislimbach@posteo.org</a></div>
+          </div>
+          <div class="contact">Kiefholzstr. 19, Gewerbehof 2<br>12453 Berlin (Treptow), Germany</div>
+        </div>
         <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Kiefholzstr.+19,+12453+Berlin" target="_blank" rel="noopener"><img src="img/map.jpg" alt="Map: Kiefholzstraße 19, Berlin Treptow"></a>
-        <div class="contact">Kiefholzstr. 19, Gewerbehof 2<br>12453 Berlin (Treptow), Germany</div>
-      </aside>
+      </div>
     </div>
   </section>
 
@@ -357,15 +382,22 @@ function openVideo(i) {
   player.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
+function infoSpans(w) {
+  var k = [el('span', { class: 't', text: w.title })];
+  if (w.client) k.push(el('span', { class: 'c', text: w.client }));
+  if (w.role) k.push(el('span', { class: 'r', text: w.role }));
+  if (w.note) k.push(el('span', { class: 'n', text: w.note }));
+  return k;
+}
 WORK.forEach(function (w, i) {
-  var b = el('button', { type: 'button', class: 'thumb', 'aria-label': 'Play ' + w.title }, [el('img', { src: w.thumb, alt: '', loading: 'lazy' })]);
+  var b = el('button', { type: 'button', class: 'thumb', 'aria-label': 'Play ' + w.title }, [
+    el('img', { src: w.thumb, alt: '', loading: 'lazy' }),
+    el('span', { class: 'shade' }),
+    el('span', { class: 'info', 'aria-hidden': 'true' }, infoSpans(w))
+  ]);
   b.addEventListener('click', function () { openVideo(i); });
   thumbs.push(b);
-  var kids = [b, el('h3', { text: w.title })];
-  if (w.client) kids.push(el('p', { class: 'client', text: w.client }));
-  if (w.role) kids.push(el('p', { class: 'role', text: w.role }));
-  if (w.note) kids.push(el('p', { class: 'note', text: w.note }));
-  grid.appendChild(el('article', { class: 'card' }, kids));
+  grid.appendChild(el('article', { class: 'card' }, [b, el('div', { class: 'below' }, infoSpans(w))]));
 });
 
 function showReel() {
