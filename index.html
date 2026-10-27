@@ -42,6 +42,14 @@ a:hover { color: var(--peach); }
 .links { display: flex; flex-wrap: wrap; gap: 8px 28px; }
 .links a { font-family: var(--display); color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; text-underline-offset: 5px; }
 .links a:hover { color: #fff; text-decoration: underline; }
+.links { align-items: center; }
+.ig { display: inline-flex; align-items: center; color: #fff; font-family: var(--display); font-size: 13px; }
+.ig img { width: 18px; height: 18px; filter: brightness(0) invert(1); }
+.ig:hover img { opacity: .75; }
+.ig-mark { display: block; width: 30px; height: 30px; background: var(--pink); -webkit-mask: url(img/instagram.png) center / contain no-repeat; mask: url(img/instagram.png) center / contain no-repeat; transition: background .2s ease; }
+.ig-contact:hover .ig-mark { background: var(--ink); }
+.reach .contact a { color: var(--ink); text-decoration-color: currentColor; }
+.reach .contact a:hover { color: var(--pink); }
 
 section[id] { scroll-margin-top: 80px; }
 @media (max-width: 600px) {
@@ -176,6 +184,7 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
       <a href="#studio">Sound Agency</a>
       <a href="#soundart">Sound Art</a>
       <a href="#about">About</a>
+      <a class="ig" href="https://www.instagram.com/krislimbachstudios/" target="_blank" rel="noopener"><img src="img/instagram.png" alt="Instagram"></a>
     </div>
   </nav>
 </header>
@@ -250,7 +259,7 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
           <div class="reach-col">
             <h4>Contact</h4>
             <div class="contact"><strong>Kris Limbach</strong><br>mail: <a href="mailto:krislimbach@posteo.org">krislimbach@posteo.org</a></div>
-            <a class="ghost" href="https://www.instagram.com/krislimbachstudios/" target="_blank" rel="noopener">Instagram &#8599;</a>
+            <a class="ig ig-contact" href="https://www.instagram.com/krislimbachstudios/" target="_blank" rel="noopener" aria-label="Instagram"><span class="ig-mark"></span></a>
           </div>
           <div class="reach-col">
             <h4>Studio</h4>
