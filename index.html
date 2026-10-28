@@ -204,17 +204,6 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
     <p class="claim">One ear across the whole project.</p>
   </section>
 
-  <section class="services reveal" aria-labelledby="services-h">
-    <h3 id="services-h" class="sub">Services</h3>
-    <div class="svc">
-      <div><h4>Supervision</h4><ul><li>Sound supervision</li><li>Team and crew assembly</li><li>Coordination from set to delivery</li></ul></div>
-      <div><h4>Recording</h4><ul><li>Set recording</li><li>Ambisonics recording</li><li>Field recording and foley</li></ul></div>
-      <div><h4>Post</h4><ul><li>Sound design</li><li>Dialogue editing</li><li>Music editing</li><li>Mixing: stereo, 5.1 and immersive (Dolby Atmos)</li></ul></div>
-      <div><h4>Music</h4><ul><li>Scoring and composition</li><li>Mastering for vinyl and streaming</li></ul></div>
-      <div><h4>Acoustics</h4><ul><li>Studio and room treatment</li><li>Acoustic consulting</li></ul></div>
-    </div>
-  </section>
-
   <section class="block reveal" aria-labelledby="work-h">
     <h2 id="work-h" class="label">work</h2>
     <div class="player" id="player">
@@ -228,6 +217,17 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
       </div>
     </div>
     <div class="grid" id="work-grid"></div>
+  </section>
+
+  <section class="services reveal" aria-labelledby="services-h">
+    <h3 id="services-h" class="sub">Services</h3>
+    <div class="svc">
+      <div><h4>Supervision</h4><ul><li>Sound supervision</li><li>Team and crew assembly</li><li>Coordination from set to delivery</li></ul></div>
+      <div><h4>Recording</h4><ul><li>Set recording</li><li>Ambisonics recording</li><li>Field recording and foley</li></ul></div>
+      <div><h4>Post</h4><ul><li>Sound design</li><li>Dialogue editing</li><li>Music editing</li><li>Mixing: stereo, 5.1 and immersive (Dolby Atmos)</li></ul></div>
+      <div><h4>Music</h4><ul><li>Scoring and composition</li><li>Mastering for vinyl and streaming</li></ul></div>
+      <div><h4>Acoustics</h4><ul><li>Studio and room treatment</li><li>Acoustic consulting</li></ul></div>
+    </div>
   </section>
 
   <section id="soundart" class="block reveal" aria-labelledby="art-h">
@@ -437,7 +437,6 @@ document.getElementById('art-close').addEventListener('click', function () {
   artScreen.innerHTML = '';
   artPlayer.hidden = true;
 });
-
 
 /* Reveal on scroll */
 var io = new IntersectionObserver(function (entries) {
