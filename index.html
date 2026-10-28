@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kris Limbach Studios</title>
 <meta name="description" content="Sound agency in Berlin: sound supervision, set and field recording, sound design, mixing in stereo, 5.1 and Dolby Atmos, scoring and acoustics.">
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 <link rel="stylesheet" href="fonts.css">
 <style>
 /* Layout: one centered 1400px column, dark ground, pink only as accent and in the top bar */
@@ -155,7 +156,31 @@ h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; 
 
 /* Newsletter */
 .newsletter { padding-block: 0 136px; }
-.newsletter iframe { display: block; width: 560px; max-width: 100%; height: 390px; margin: 0; border: 0; }
+/* Brevo form, styled to match the site (Brevo's own CSS loads first, these rules override it) */
+.reach-news { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 16px; padding-top: 32px; border-top: 1px solid var(--line); text-align: center; }
+@media (min-width: 901px) { .reach-news.newsletter { padding-bottom: 0; margin-top: 0; padding-top: 8px; border-top: 0; } }
+.reach-news .sib-form, .reach-news #sib-container { width: 100%; max-width: 520px; margin: 0 auto; }
+.reach-news .nl-intro { text-align: center; font-family: var(--display); font-weight: 400; font-size: 16px; color: var(--ink-mute); margin-bottom: 16px; }
+.reach-news .nl-row { justify-content: center; }
+.newsletter .sib-form { padding: 0; background: transparent; text-align: left; font-family: var(--display); }
+.newsletter .sib-form-container, .newsletter #sib-container { max-width: 640px; margin: 0; padding: 0; background: transparent; border: 0; text-align: left; }
+.newsletter .nl-intro { margin: 0 0 24px; font-family: var(--body); font-weight: 200; font-size: clamp(18px, 1.9vw, 25px); color: var(--ink-soft); }
+.newsletter .nl-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: stretch; }
+.newsletter .nl-row .entry__field { flex: 1 1 280px; margin: 0; border: 0; background: none; box-shadow: none; }
+.newsletter #EMAIL { width: 100%; height: 48px; padding: 0 20px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); color: var(--ink); font-family: var(--display); font-size: 16px; outline: none; }
+.newsletter #EMAIL::placeholder { color: var(--ink-faint); font-family: var(--display); }
+.newsletter #EMAIL:focus { border-color: var(--pink); }
+.newsletter .sib-form-block__button { display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 28px; margin: 0; border: 1px solid var(--pink); border-radius: 999px; background: transparent; color: var(--pink); font-family: var(--display); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; cursor: pointer; }
+.newsletter .sib-form-block__button:hover { background: var(--pink); color: var(--bg); }
+.newsletter .sib-form-block__button svg { width: 14px; height: 14px; fill: currentColor; }
+.newsletter .sib-hide-loader-icon { display: none; }
+.newsletter .entry__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.newsletter .entry__error { display: none; margin-top: 10px; font-family: var(--display); font-size: 14px; color: var(--pink); background: none; border: 0; padding: 0; }
+.newsletter .entry__error:not(:empty) { display: block; }
+.newsletter .input--hidden { display: none !important; }
+.newsletter .sib-form-message-panel { display: none; max-width: 640px; margin: 0 0 20px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); font-family: var(--display); font-size: 15px; color: var(--ink); }
+.newsletter #success-message { border-color: var(--pink); }
+.newsletter .sib-notification__icon { display: none; }
 
 footer { background: var(--bg-deep); border-top: 1px solid var(--line); }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; padding-block: 32px; font-family: var(--display); font-size: 13px; line-height: 1.7; color: var(--ink-faint); }
@@ -258,12 +283,54 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
         <div class="reach">
           <div class="reach-col">
             <h4>Contact</h4>
-            <div class="contact"><strong>Kris Limbach</strong><br>mail: <a href="mailto:krislimbach@posteo.de">krislimbach@posteo.de</a></div>
+            <div class="contact"><strong>Kris Limbach</strong><br><a href="mailto:krislimbach@posteo.de">krislimbach@posteo.de</a></div>
             <a class="ig ig-contact" href="https://www.instagram.com/krislimbachstudios/" target="_blank" rel="noopener" ><img class="ig-pink" src="img/instagram-pink.png" alt="Instagram"></a>
           </div>
           <div class="reach-col">
             <h4>Studio</h4>
             <div class="contact">Kiefholzstr. 19, Gewerbehof 2<br>12453 Berlin (Treptow)<br>Germany</div>
+          </div>
+          <div class="reach-news newsletter">
+            <h4>Newsletter</h4>
+          <!-- Brevo form (from Kris's Brevo account). Do not change ids, names or the action URL. -->
+          <div class="sib-form">
+            <div id="sib-form-container" class="sib-form-container">
+              <div id="error-message" class="sib-form-message-panel">
+                <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+                  <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon"></svg>
+                  <span class="sib-form-message-panel__inner-text">Deine Anmeldung konnte nicht gespeichert werden. Bitte versuche es erneut.</span>
+                </div>
+              </div>
+              <div id="success-message" class="sib-form-message-panel">
+                <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+                  <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon"></svg>
+                  <span class="sib-form-message-panel__inner-text">Deine Anmeldung war erfolgreich.</span>
+                </div>
+              </div>
+              <div id="sib-container" class="sib-container--large sib-container--vertical">
+                <form id="sib-form" method="POST" action="https://bb07ea0e.sibforms.com/serve/MUIFAPNXmNDj3bKqzP1iMS7KAya58-c6gEYRfvN0AK0-Z0CHx1TNDWqXuo1SJK--AMD10Pai23Y0wmWnt1QrTEkiWzSQBFOOlU4uCKH9LjWQFU9Sud5E1p2uHFfb-tjJ1P91niPlNaW_15LgpyKEOuH2uoNGyA1VXhXeZgZWcZ8t0TtBYPUkokoiubEAzG3meg_gGQnYZNe0sHaM" data-type="subscription">
+                  <p class="nl-intro">Sign up to our newsletter</p>
+                  <div class="sib-input sib-form-block">
+                    <div class="form__entry entry_block">
+                      <div class="form__label-row nl-row">
+                        <label class="entry__label" for="EMAIL" data-required="*">Your email address</label>
+                        <div class="entry__field">
+                          <input class="input" type="email" id="EMAIL" name="EMAIL" autocomplete="email" value="" placeholder="Your email address" data-required="true" required>
+                        </div>
+                        <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+                          <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
+                          Subscribe
+                        </button>
+                      </div>
+                      <label class="entry__error entry__error--primary"></label>
+                    </div>
+                  </div>
+                  <input type="text" name="email_address_check" value="" class="input--hidden" tabindex="-1" autocomplete="off">
+                  <input type="hidden" name="locale" value="de">
+                </form>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
         <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Kiefholzstr.+19,+12453+Berlin" target="_blank" rel="noopener"><img src="img/map.jpg" alt="Map: Kiefholzstraße 19, Berlin Treptow"></a>
@@ -271,15 +338,11 @@ footer .row { display: flex; flex-wrap: wrap; gap: 6px 18px; }
     </div>
   </section>
 
-  <section class="newsletter reveal" aria-labelledby="news-h">
-    <h2 id="news-h" class="label">newsletter</h2>
-    <iframe src="https://bb07ea0e.sibforms.com/v2/serve/MUIFAPNXmNDj3bKqzP1iMS7KAya58-c6gEYRfvN0AK0-Z0CHx1TNDWqXuo1SJK--AMD10Pai23Y0wmWnt1QrTEkiWzSQBFOOlU4uCKH9LjWQFU9Sud5E1p2uHFfb-tjJ1P91niPlNaW_15LgpyKEOuH2uoNGyA1VXhXeZgZWcZ8t0TtBYPUkokoiubEAzG3meg_gGQnYZNe0sHaM" title="Newsletter sign-up" scrolling="auto" loading="lazy" allowfullscreen></iframe>
-  </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <div><span style="color: var(--ink)">Kris Limbach</span><br>mail: <a href="mailto:krislimbach@posteo.de">krislimbach@posteo.de</a></div>
+    <div><span style="color: var(--ink)">Kris Limbach</span><br><a href="mailto:krislimbach@posteo.de">krislimbach@posteo.de</a></div>
     <div>Kiefholzstr. 19, Gewerbehof 2<br>12453 Berlin (Treptow), Germany</div>
     <div style="display: flex; flex-direction: column; gap: 8px">
       <div class="row"><a href="https://www.instagram.com/krislimbachstudios/" target="_blank" rel="noopener">Instagram</a><a href="https://krislimbach.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a><a href="https://vimeo.com/emitter19" target="_blank" rel="noopener">Vimeo</a><a href="https://krislimbach.com" target="_blank" rel="noopener">krislimbach.com</a></div>
@@ -444,5 +507,19 @@ var io = new IntersectionObserver(function (entries) {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(function (n) { io.observe(n); });
 </script>
+<script>
+  /* Brevo form settings (messages from Kris's Brevo form) */
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte einen Ländervorwahl aus.';
+  window.LOCALE = 'de';
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Die eingegebenen Informationen sind nicht gültig. Bitte überprüfe das Feldformat und versuche es erneut.";
+  window.REQUIRED_ERROR_MESSAGE = "Dieses Feld darf nicht leer sein. ";
+  window.GENERIC_INVALID_MESSAGE = "Die eingegebenen Informationen sind nicht gültig. Bitte überprüfe das Feldformat und versuche es erneut.";
+  window.INVALID_NUMBER = "Die eingegebenen Informationen sind nicht gültig. Bitte überprüfe das Feldformat und versuche es erneut.";
+  window.INVALID_DATE = "Bitte gib ein gültiges Datum ein";
+  window.REQUIRED_MULTISELECT_MESSAGE = 'Wähle bitte mindestens eine Option aus';
+  window.translation = { common: { selectedList: '{quantity} Liste ausgewählt', selectedLists: '{quantity} Listen ausgewählt', selectedOption: '{quantity} ausgewählt', selectedOptions: '{quantity} ausgewählt' } };
+  var AUTOHIDE = Boolean(0);
+</script>
+<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 </body>
 </html>
